@@ -16,13 +16,60 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
     <link rel="stylesheet" href="style.css">
-
     <script src="script.js" defer></script>
+
+    <style>
+        /* Subtle homepage neon accents */
+        .logo span {
+            text-shadow: 0 0 8px rgba(146, 112, 255, 0.4);
+        }
+
+        .hero-label {
+            box-shadow: 0 0 14px rgba(146, 112, 255, 0.07);
+        }
+
+        .hero-content h1 span {
+            text-shadow: 0 0 18px rgba(146, 112, 255, 0.12);
+        }
+
+        .hero-buttons .btn-primary,
+        .cta-container .btn-primary {
+            box-shadow: 0 0 16px rgba(146, 112, 255, 0.16);
+            transition: box-shadow 0.25s ease, transform 0.25s ease;
+        }
+
+        .hero-buttons .btn-primary:hover,
+        .cta-container .btn-primary:hover {
+            box-shadow: 0 0 22px rgba(146, 112, 255, 0.25);
+            transform: translateY(-2px);
+        }
+
+        .feature-card {
+            transition: border-color 0.25s ease,
+                        box-shadow 0.25s ease,
+                        transform 0.25s ease;
+        }
+
+        .feature-card:hover {
+            box-shadow: 0 5px 22px rgba(146, 112, 255, 0.09);
+        }
+
+        .floating-note {
+            box-shadow: 0 5px 24px rgba(146, 112, 255, 0.10);
+        }
+
+        .footer-bottom {
+            justify-content: center;
+        }
+
+        .footer-bottom p {
+            text-align: center;
+            width: 100%;
+        }
+    </style>
 </head>
 
 <body>
-
-    <!-- NAVIGATION -->
 
     <header class="navbar">
         <div class="container nav-container">
@@ -52,10 +99,7 @@
         </div>
     </header>
 
-
     <main>
-
-        <!-- HERO SECTION -->
 
         <section class="hero" id="home">
             <div class="container hero-container">
@@ -96,9 +140,6 @@
 
                 </div>
 
-
-                <!-- DASHBOARD PREVIEW -->
-
                 <div class="hero-visual">
 
                     <div class="preview-card">
@@ -114,7 +155,6 @@
 
                             <div class="preview-avatar">Y</div>
                         </div>
-
 
                         <div class="preview-stats">
 
@@ -135,7 +175,6 @@
                             </div>
 
                         </div>
-
 
                         <div class="preview-schedule">
 
@@ -162,7 +201,6 @@
 
                         </div>
 
-
                         <div class="preview-footer">
                             <span>balanceyourtime.</span>
                             <span>Your day, your way.</span>
@@ -183,9 +221,6 @@
             </div>
         </section>
 
-
-        <!-- INTRODUCTION -->
-
         <section class="intro-section">
             <div class="container intro-container">
 
@@ -205,9 +240,6 @@
             </div>
         </section>
 
-
-        <!-- FEATURES -->
-
         <section class="features-section" id="features">
             <div class="container">
 
@@ -225,87 +257,48 @@
                     </p>
                 </div>
 
-
                 <div class="features-grid">
 
                     <article class="feature-card">
                         <div class="feature-icon purple-icon">◷</div>
-
                         <h3>Time Tracking</h3>
-
-                        <p>
-                            Understand where your time goes with activity
-                            tracking and daily summaries.
-                        </p>
+                        <p>Understand where your time goes with activity tracking and daily summaries.</p>
                     </article>
-
 
                     <article class="feature-card">
                         <div class="feature-icon blue-icon">▦</div>
-
                         <h3>Smart Daily Planning</h3>
-
-                        <p>
-                            Organise your responsibilities with a clear
-                            daily and weekly schedule.
-                        </p>
+                        <p>Organise your responsibilities with a clear daily and weekly schedule.</p>
                     </article>
-
 
                     <article class="feature-card">
                         <div class="feature-icon pink-icon">♡</div>
-
                         <h3>Hobby Protector</h3>
-
-                        <p>
-                            Set weekly goals and make dedicated time
-                            for the activities you enjoy.
-                        </p>
+                        <p>Set weekly goals and make dedicated time for the activities you enjoy.</p>
                     </article>
-
 
                     <article class="feature-card">
                         <div class="feature-icon green-icon">▤</div>
-
                         <h3>Study Planner</h3>
-
-                        <p>
-                            Organise subjects, topics, revision sessions
-                            and upcoming homework.
-                        </p>
+                        <p>Organise subjects, topics, revision sessions and upcoming homework.</p>
                     </article>
-
 
                     <article class="feature-card">
                         <div class="feature-icon orange-icon">✓</div>
-
                         <h3>Understanding Checks</h3>
-
-                        <p>
-                            Reflect on what you've learned and identify
-                            topics that need more practice.
-                        </p>
+                        <p>Reflect on what you've learned and identify topics that need more practice.</p>
                     </article>
-
 
                     <article class="feature-card">
                         <div class="feature-icon cyan-icon">⌁</div>
-
                         <h3>Progress Reports</h3>
-
-                        <p>
-                            Review your activities, learning progress
-                            and weekly time distribution.
-                        </p>
+                        <p>Review your activities, learning progress and weekly time distribution.</p>
                     </article>
 
                 </div>
 
             </div>
         </section>
-
-
-        <!-- HOW IT WORKS -->
 
         <section class="how-section" id="how-it-works">
             <div class="container">
@@ -318,60 +311,39 @@
                         <span>A better balance.</span>
                     </h2>
 
-                    <p>
-                        Getting organised doesn't have to be complicated.
-                    </p>
+                    <p>Getting organised doesn't have to be complicated.</p>
                 </div>
-
 
                 <div class="steps-grid">
 
                     <article class="step-card">
                         <span class="step-number">01</span>
                         <h3>Create your account</h3>
-                        <p>
-                            Set up your personal balanceyourtime.
-                            account.
-                        </p>
+                        <p>Set up your personal balanceyourtime. account.</p>
                     </article>
-
 
                     <article class="step-card">
                         <span class="step-number">02</span>
                         <h3>Set your priorities</h3>
-                        <p>
-                            Add your subjects, activities and
-                            favourite hobbies.
-                        </p>
+                        <p>Add your subjects, activities and favourite hobbies.</p>
                     </article>
-
 
                     <article class="step-card">
                         <span class="step-number">03</span>
                         <h3>Plan your day</h3>
-                        <p>
-                            Create a schedule that makes room
-                            for your responsibilities.
-                        </p>
+                        <p>Create a schedule that makes room for your responsibilities.</p>
                     </article>
-
 
                     <article class="step-card">
                         <span class="step-number">04</span>
                         <h3>Review your progress</h3>
-                        <p>
-                            Track your time and learn how to
-                            improve your balance.
-                        </p>
+                        <p>Track your time and learn how to improve your balance.</p>
                     </article>
 
                 </div>
 
             </div>
         </section>
-
-
-        <!-- FINAL CALL TO ACTION -->
 
         <section class="cta-section">
             <div class="container cta-container">
@@ -398,9 +370,6 @@
 
     </main>
 
-
-    <!-- FOOTER -->
-
     <footer class="footer">
         <div class="container">
 
@@ -411,11 +380,8 @@
                         balanceyourtime<span>.</span>
                     </a>
 
-                    <p>
-                        Make time for what matters.
-                    </p>
+                    <p>Make time for what matters.</p>
                 </div>
-
 
                 <div class="footer-links">
                     <h4>Explore</h4>
@@ -423,7 +389,6 @@
                     <a href="#features">Features</a>
                     <a href="#how-it-works">How It Works</a>
                 </div>
-
 
                 <div class="footer-links">
                     <h4>Account</h4>
@@ -433,14 +398,8 @@
 
             </div>
 
-
             <div class="footer-bottom">
-                <p>
-                    © <span id="currentYear"></span> balanceyourtime.
-                    All rights reserved.
-                </p>
-
-                <p>Make time for what matters.</p>
+                <p>Made for AccessUSA</p>
             </div>
 
         </div>
