@@ -1,0 +1,547 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Settings | balanceyourtime.</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="style.css">
+    <script type="module" src="settings.js"></script>
+</head>
+
+<body class="dashboard-page">
+
+<div class="dashboard-layout">
+
+    <!-- SIDEBAR -->
+    <aside class="sidebar" id="sidebar">
+        <a href="dashboard.html" class="logo sidebar-logo">
+            balanceyourtime<span>.</span>
+        </a>
+
+        <div class="sidebar-section">
+            <p class="sidebar-label">WORKSPACE</p>
+
+            <nav class="sidebar-nav" aria-label="Main navigation">
+                <a href="dashboard.html" class="sidebar-link">
+                    <span class="nav-icon">⌂</span><span>Overview</span>
+                </a>
+                <a href="schedule.html" class="sidebar-link">
+                    <span class="nav-icon">▦</span><span>My Schedule</span>
+                </a>
+                <a href="tracker.html" class="sidebar-link">
+                    <span class="nav-icon">◷</span><span>Time Tracker</span>
+                </a>
+                <a href="hobbies.html" class="sidebar-link">
+                    <span class="nav-icon">♡</span><span>My Hobbies</span>
+                </a>
+                <a href="study.html" class="sidebar-link">
+                    <span class="nav-icon">▤</span><span>Study Planner</span>
+                </a>
+                <a href="reports.html" class="sidebar-link">
+                    <span class="nav-icon">▥</span><span>Progress Reports</span>
+                </a>
+                <a href="settings.html" class="sidebar-link active" aria-current="page">
+                    <span class="nav-icon">⚙</span><span>Settings</span>
+                </a>
+            </nav>
+        </div>
+
+        <div class="sidebar-bottom">
+            <div class="sidebar-tip">
+                <span class="tip-icon">✦</span>
+                <h3>Make it yours.</h3>
+                <p>Customise your workspace to fit your routine.</p>
+            </div>
+
+            <button type="button" class="sidebar-profile" id="sidebarProfile">
+                <div class="profile-avatar" id="sidebarAvatar">?</div>
+                <div class="profile-details">
+                    <strong id="sidebarUserName">Your account</strong>
+                    <small id="sidebarUserEmail">Loading profile...</small>
+                </div>
+                <span class="profile-menu-arrow">⌄</span>
+            </button>
+        </div>
+    </aside>
+
+
+    <!-- MAIN CONTENT -->
+    <main class="dashboard-main">
+
+        <!-- TOPBAR -->
+        <header class="dashboard-topbar">
+            <div class="topbar-left">
+                <button type="button" class="mobile-menu-button"
+                    id="sidebarToggle" aria-label="Open navigation"
+                    aria-expanded="false" aria-controls="sidebar">☰</button>
+
+                <div class="breadcrumb">
+                    <span>Workspace</span>
+                    <span>/</span>
+                    <strong>Settings</strong>
+                </div>
+            </div>
+
+            <div class="topbar-actions">
+                <button type="button" class="icon-button"
+                    id="themeToggle" aria-label="Switch theme">◐</button>
+
+                <button type="button" class="icon-button"
+                    id="notificationsButton" aria-label="Notifications">♧</button>
+
+                <div class="topbar-profile">
+                    <button type="button" class="topbar-avatar"
+                        id="profileMenuToggle" aria-label="Open account menu"
+                        aria-expanded="false">
+                        <span id="topbarAvatar">?</span>
+                    </button>
+
+                    <div class="account-dropdown" id="accountDropdown" hidden>
+                        <div class="dropdown-user">
+                            <strong id="dropdownName">Your account</strong>
+                            <small id="dropdownEmail">Loading...</small>
+                        </div>
+                        <a href="settings.html">Account settings</a>
+                        <button type="button" id="signOutButton">Sign out</button>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+
+        <div class="dashboard-content">
+
+            <!-- INTRO -->
+            <section class="page-heading-row">
+                <div>
+                    <p class="welcome-eyebrow">YOUR ACCOUNT</p>
+                    <h1>Settings</h1>
+                    <p>Manage your profile, preferences and account security.</p>
+                </div>
+            </section>
+
+
+            <!-- SETTINGS NAVIGATION -->
+            <nav class="settings-tabs" aria-label="Settings sections">
+                <a href="#profileSettings">Profile</a>
+                <a href="#appearanceSettings">Appearance</a>
+                <a href="#notificationSettings">Notifications</a>
+                <a href="#routineSettings">Preferences</a>
+                <a href="#securitySettings">Security</a>
+            </nav>
+
+
+            <!-- PROFILE SETTINGS -->
+            <section class="dashboard-panel settings-section" id="profileSettings">
+
+                <div class="panel-header">
+                    <div>
+                        <h2>Profile information</h2>
+                        <p>Update the information associated with your account.</p>
+                    </div>
+                </div>
+
+                <form id="profileSettingsForm">
+
+                    <div class="avatar-upload-section">
+
+                        <div class="profile-avatar large-avatar" id="settingsAvatar">
+                            ?
+                        </div>
+
+                        <div class="avatar-upload-info">
+                            <strong>Profile picture</strong>
+                            <p>Choose an image to personalise your account.</p>
+
+                            <label for="avatarFile" class="btn btn-secondary">
+                                Upload picture
+                            </label>
+
+                            <input
+                                type="file"
+                                id="avatarFile"
+                                accept="image/png,image/jpeg,image/webp"
+                                hidden>
+
+                            <button type="button" class="text-link"
+                                id="removeAvatarButton">
+                                Remove picture
+                            </button>
+
+                            <small>PNG, JPG or WebP. Maximum size: 5 MB.</small>
+                        </div>
+
+                    </div>
+
+                    <div class="settings-form-grid">
+
+                        <div class="form-group">
+                            <label for="settingsFullName">Full name</label>
+                            <input type="text" id="settingsFullName"
+                                maxlength="80" autocomplete="name" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="settingsPreferredName">Preferred name</label>
+                            <input type="text" id="settingsPreferredName"
+                                maxlength="40" autocomplete="given-name">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="settingsUsername">Username</label>
+                            <input type="text" id="settingsUsername"
+                                minlength="3" maxlength="20"
+                                pattern="[A-Za-z0-9_]+" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="settingsEmail">Email address</label>
+                            <input type="email" id="settingsEmail" disabled>
+                            <small>Your email is managed by your sign-in provider.</small>
+                        </div>
+
+                    </div>
+
+                    <div class="settings-save-row">
+                        <div class="auth-message" id="profileMessage"
+                            role="status" aria-live="polite" hidden></div>
+
+                        <button type="submit" class="btn btn-primary"
+                            id="saveProfileButton">
+                            Save profile
+                        </button>
+                    </div>
+
+                </form>
+            </section>
+
+
+            <!-- APPEARANCE -->
+            <section class="dashboard-panel settings-section" id="appearanceSettings">
+
+                <div class="panel-header">
+                    <div>
+                        <h2>Appearance</h2>
+                        <p>Choose how balanceyourtime. looks on your device.</p>
+                    </div>
+                </div>
+
+                <form id="appearanceForm">
+
+                    <fieldset class="choice-fieldset">
+                        <legend class="field-legend">Colour theme</legend>
+
+                        <div class="theme-options">
+
+                            <label class="theme-option">
+                                <input type="radio" name="theme"
+                                    value="dark" required>
+
+                                <span class="theme-preview dark-preview">
+                                    <span></span>
+                                    <span></span>
+                                    <span></span>
+                                </span>
+
+                                <strong>Dark</strong>
+                            </label>
+
+                            <label class="theme-option">
+                                <input type="radio" name="theme"
+                                    value="light">
+
+                                <span class="theme-preview light-preview">
+                                    <span></span>
+                                    <span></span>
+                                    <span></span>
+                                </span>
+
+                                <strong>Light</strong>
+                            </label>
+
+                            <label class="theme-option">
+                                <input type="radio" name="theme"
+                                    value="system">
+
+                                <span class="theme-preview system-preview">
+                                    <span></span>
+                                    <span></span>
+                                    <span></span>
+                                </span>
+
+                                <strong>System default</strong>
+                            </label>
+
+                        </div>
+                    </fieldset>
+
+                    <div class="settings-save-row">
+                        <div class="auth-message" id="appearanceMessage"
+                            role="status" aria-live="polite" hidden></div>
+
+                        <button type="submit" class="btn btn-primary"
+                            id="saveAppearanceButton">
+                            Save appearance
+                        </button>
+                    </div>
+
+                </form>
+            </section>
+
+
+            <!-- NOTIFICATIONS -->
+            <section class="dashboard-panel settings-section" id="notificationSettings">
+
+                <div class="panel-header">
+                    <div>
+                        <h2>Notifications</h2>
+                        <p>Choose which reminders and updates you receive.</p>
+                    </div>
+                </div>
+
+                <form id="notificationSettingsForm">
+
+                    <div class="settings-option">
+                        <div>
+                            <strong>Activity reminders</strong>
+                            <p>Get reminders for upcoming scheduled activities.</p>
+                        </div>
+                        <label class="toggle-control">
+                            <input type="checkbox" id="activityReminders">
+                            <span class="toggle-slider"></span>
+                        </label>
+                    </div>
+
+                    <div class="settings-option">
+                        <div>
+                            <strong>Study reminders</strong>
+                            <p>Receive reminders for study and revision sessions.</p>
+                        </div>
+                        <label class="toggle-control">
+                            <input type="checkbox" id="studyReminders">
+                            <span class="toggle-slider"></span>
+                        </label>
+                    </div>
+
+                    <div class="settings-option">
+                        <div>
+                            <strong>Hobby goal reminders</strong>
+                            <p>Get a reminder when you have hobby time planned.</p>
+                        </div>
+                        <label class="toggle-control">
+                            <input type="checkbox" id="hobbyReminders">
+                            <span class="toggle-slider"></span>
+                        </label>
+                    </div>
+
+                    <div class="settings-option">
+                        <div>
+                            <strong>Weekly progress summary</strong>
+                            <p>Review your weekly time and learning progress.</p>
+                        </div>
+                        <label class="toggle-control">
+                            <input type="checkbox" id="weeklySummary">
+                            <span class="toggle-slider"></span>
+                        </label>
+                    </div>
+
+                    <div class="settings-save-row">
+                        <div class="auth-message" id="notificationMessage"
+                            role="status" aria-live="polite" hidden></div>
+
+                        <button type="submit" class="btn btn-primary"
+                            id="saveNotificationsButton">
+                            Save notification settings
+                        </button>
+                    </div>
+
+                </form>
+            </section>
+
+
+            <!-- ROUTINE PREFERENCES -->
+            <section class="dashboard-panel settings-section" id="routineSettings">
+
+                <div class="panel-header">
+                    <div>
+                        <h2>Routine preferences</h2>
+                        <p>Set your preferences for planning and tracking your time.</p>
+                    </div>
+                </div>
+
+                <form id="routinePreferencesForm">
+
+                    <div class="settings-form-grid">
+
+                        <div class="form-group">
+                            <label for="defaultView">Default calendar view</label>
+                            <select id="defaultView">
+                                <option value="day">Daily</option>
+                                <option value="week">Weekly</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="weekStarts">Week starts on</label>
+                            <select id="weekStarts">
+                                <option value="monday">Monday</option>
+                                <option value="sunday">Sunday</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="timeFormat">Time format</label>
+                            <select id="timeFormat">
+                                <option value="12">12-hour clock</option>
+                                <option value="24">24-hour clock</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="preferredHobbyGoal">Weekly hobby goal (hours)</label>
+                            <input type="number" id="preferredHobbyGoal"
+                                min="0.5" max="60" step="0.5">
+                        </div>
+
+                    </div>
+
+                    <div class="settings-save-row">
+                        <div class="auth-message" id="preferencesMessage"
+                            role="status" aria-live="polite" hidden></div>
+
+                        <button type="submit" class="btn btn-primary"
+                            id="savePreferencesButton">
+                            Save preferences
+                        </button>
+                    </div>
+
+                </form>
+            </section>
+
+
+            <!-- SECURITY -->
+            <section class="dashboard-panel settings-section" id="securitySettings">
+
+                <div class="panel-header">
+                    <div>
+                        <h2>Account security</h2>
+                        <p>Manage your password and account access.</p>
+                    </div>
+                </div>
+
+                <form id="passwordSettingsForm">
+
+                    <div class="form-group">
+                        <label for="newPassword">New password</label>
+                        <input type="password" id="newPassword"
+                            autocomplete="new-password"
+                            minlength="8" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="confirmNewPassword">Confirm new password</label>
+                        <input type="password" id="confirmNewPassword"
+                            autocomplete="new-password"
+                            minlength="8" required>
+                    </div>
+
+                    <div class="settings-save-row">
+                        <div class="auth-message" id="passwordMessage"
+                            role="status" aria-live="polite" hidden></div>
+
+                        <button type="submit" class="btn btn-primary"
+                            id="updatePasswordButton">
+                            Update password
+                        </button>
+                    </div>
+
+                </form>
+
+                <div class="settings-danger-zone">
+                    <h3>Sign out</h3>
+                    <p>End your current session on this device.</p>
+                    <button type="button" class="btn btn-secondary"
+                        id="settingsSignOutButton">
+                        Sign out
+                    </button>
+                </div>
+
+                <div class="settings-danger-zone">
+                    <h3>Delete account</h3>
+                    <p>
+                        Account deletion is permanent and removes your
+                        associated personal data.
+                    </p>
+
+                    <button type="button" class="btn btn-danger"
+                        id="deleteAccountButton">
+                        Delete my account
+                    </button>
+                </div>
+
+            </section>
+
+
+            <!-- FOOTER -->
+            <footer class="dashboard-footer">
+                <p>balanceyourtime. — Make time for what matters.</p>
+                <a href="dashboard.html">Back to overview</a>
+            </footer>
+
+        </div>
+    </main>
+</div>
+
+
+<!-- DELETE ACCOUNT CONFIRMATION -->
+<dialog class="quick-add-dialog" id="deleteAccountDialog">
+
+    <div class="dialog-header">
+        <div>
+            <p class="auth-eyebrow">ACCOUNT MANAGEMENT</p>
+            <h2>Delete your account?</h2>
+        </div>
+
+        <button type="button" class="dialog-close"
+            id="closeDeleteDialog" aria-label="Close dialog">×</button>
+    </div>
+
+    <form id="deleteAccountForm">
+
+        <p>
+            This action is permanent. Your profile, activities,
+            schedules and associated records will be deleted.
+        </p>
+
+        <div class="form-group">
+            <label for="deleteConfirmation">
+                Type DELETE to confirm
+            </label>
+            <input type="text" id="deleteConfirmation"
+                autocomplete="off" required>
+        </div>
+
+        <div class="auth-message" id="deleteAccountMessage"
+            role="alert" aria-live="polite" hidden></div>
+
+        <div class="dialog-actions">
+            <button type="button" class="btn btn-secondary"
+                id="cancelDeleteAccount">Cancel</button>
+
+            <button type="submit" class="btn btn-danger"
+                id="confirmDeleteAccount">
+                Confirm deletion
+            </button>
+        </div>
+
+    </form>
+</dialog>
+
+</body>
+</html>
