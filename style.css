@@ -3000,3 +3000,173 @@ body[data-theme="light"] {
         animation-duration: 0.01ms !important;
     }
 }
+
+/* =========================================
+   DASHBOARD — MINIMALIST WITH CYBER ACCENTS
+========================================= */
+
+.dashboard-page {
+    --bg: #101522;
+    --surface: #171e2d;
+    --surface-2: #1d2637;
+    --surface-3: #293448;
+    --border: rgba(180, 190, 215, 0.10);
+    --text: #e9edf5;
+    --muted: #9ba6b9;
+    --primary: #947ce5;
+    --primary-hover: #a892ef;
+    --blue: #779bd3;
+    --green: #70bba0;
+    --red: #d97d87;
+    --shadow: 0 5px 20px rgba(0,0,0,0.10);
+}
+
+/* Cleaner sidebar */
+.dashboard-page .sidebar {
+    background: #141b29;
+    border-right: 1px solid var(--border);
+}
+
+.dashboard-page .sidebar-link {
+    border-radius: 7px;
+    transition: background 0.2s, color 0.2s;
+}
+
+.dashboard-page .sidebar-link.active {
+    background: rgba(148,124,229,0.10);
+    color: #c5b8fa !important;
+    box-shadow: none;
+}
+
+/* Subtle top navigation */
+.dashboard-page .dashboard-topbar {
+    background: var(--surface);
+    backdrop-filter: none;
+}
+
+/* Minimalist cards */
+.dashboard-page .summary-card,
+.dashboard-page .overview-card,
+.dashboard-page .dashboard-panel,
+.dashboard-page .quick-action-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    box-shadow: none;
+}
+
+/* Less decorative card icons */
+.dashboard-page .overview-icon,
+.dashboard-page .quick-action-icon {
+    background: transparent;
+    color: var(--primary);
+}
+
+.dashboard-page .overview-card h3 {
+    font-weight: 600;
+}
+
+.dashboard-page .summary-card > strong,
+.dashboard-page .overview-value {
+    letter-spacing: -0.5px;
+}
+
+/* Subtle buttons */
+.dashboard-page .btn-primary {
+    background: #806bc9;
+    border-radius: 8px;
+    box-shadow: none;
+}
+
+.dashboard-page .btn-primary:hover {
+    background: #907bd9;
+    transform: translateY(-1px);
+    box-shadow: none;
+}
+
+.dashboard-page .btn-secondary {
+    border-radius: 8px;
+    background: var(--surface-2);
+}
+
+/* Cleaner forms */
+.dashboard-page input,
+.dashboard-page select,
+.dashboard-page textarea {
+    border-radius: 8px;
+    box-shadow: none;
+}
+
+.dashboard-page input:focus,
+.dashboard-page select:focus,
+.dashboard-page textarea:focus {
+    border-color: var(--primary);
+    box-shadow: 0 0 0 2px rgba(148,124,229,0.10);
+}
+
+/* Minimalist charts and progress */
+.dashboard-page .progress-track {
+    background: var(--surface-3);
+}
+
+.dashboard-page .progress-fill {
+    background: #947ce5;
+}
+
+.dashboard-page .progress-circle {
+    background: conic-gradient(
+        #947ce5 0deg,
+        var(--surface-3) 0deg
+    );
+}
+
+/* Restrained dialogs */
+.dashboard-page .quick-add-dialog {
+    background: #192232;
+    border-color: var(--border);
+    box-shadow: 0 18px 60px rgba(0,0,0,0.30);
+}
+
+.dashboard-page .quick-add-dialog::backdrop {
+    background: rgba(5,9,18,0.65);
+    backdrop-filter: blur(2px);
+}
+
+/* Less visual noise */
+.dashboard-page .sidebar-tip {
+    background: var(--surface-2);
+    border-color: var(--border);
+}
+
+.dashboard-page .welcome-date {
+    background: var(--surface);
+    border-color: var(--border);
+}
+
+.dashboard-page .icon-button {
+    border-radius: 9px;
+    box-shadow: none;
+}
+
+.dashboard-page .icon-button:hover {
+    border-color: rgba(148,124,229,0.35);
+    background: var(--surface-2);
+}
+
+/* Light mode stays clean too */
+body.dashboard-page[data-theme="light"] {
+    --bg: #f5f6f9;
+    --surface: #ffffff;
+    --surface-2: #f2f3f7;
+    --surface-3: #e7e9ef;
+    --border: rgba(30,40,60,0.09);
+    --text: #20283a;
+    --muted: #788195;
+    --primary: #7863c4;
+    --primary-hover: #6954b5;
+    --shadow: 0 4px 15px rgba(30,40,60,0.04);
+}
+
+body.dashboard-page[data-theme="light"] .sidebar {
+    background: #ffffff;
+}
