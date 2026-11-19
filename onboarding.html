@@ -1,0 +1,454 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Set Up Your Profile | balanceyourtime.</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="style.css">
+
+    <script type="module" src="onboarding.js"></script>
+</head>
+
+<body class="auth-page onboarding-page">
+
+    <header class="auth-navbar">
+        <div class="container auth-nav-container">
+
+            <a href="index.html" class="logo">
+                balanceyourtime<span>.</span>
+            </a>
+
+            <a href="dashboard.html" class="back-link">
+                Skip for now →
+            </a>
+
+        </div>
+    </header>
+
+
+    <main class="onboarding-main">
+
+        <section class="onboarding-card">
+
+            <div class="onboarding-heading">
+
+                <p class="auth-eyebrow">LET'S GET TO KNOW YOU</p>
+
+                <h1>Make this space yours.</h1>
+
+                <p>
+                    Tell us a little about your routine and interests.
+                    We'll use these details to help you balance your time.
+                </p>
+
+            </div>
+
+
+            <div class="onboarding-progress">
+                <span class="progress-label">PROFILE SETUP</span>
+                <span class="progress-value">Getting started</span>
+
+                <div class="progress-track">
+                    <div class="progress-fill"></div>
+                </div>
+            </div>
+
+
+            <div
+                class="auth-message"
+                id="onboardingMessage"
+                role="alert"
+                aria-live="polite"
+                hidden>
+            </div>
+
+
+            <form id="onboardingForm">
+
+                <!-- PERSONAL DETAILS -->
+
+                <section class="onboarding-section">
+
+                    <div class="section-heading">
+                        <span class="section-number">01</span>
+
+                        <div>
+                            <h2>About you</h2>
+                            <p>Let's start with the basics.</p>
+                        </div>
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label for="preferredName">
+                            What should we call you?
+                        </label>
+
+                        <input
+                            type="text"
+                            id="preferredName"
+                            name="preferredName"
+                            placeholder="Your preferred name"
+                            maxlength="40"
+                            autocomplete="given-name"
+                            required>
+
+                    </div>
+
+                </section>
+
+
+                <!-- SCHOOL SUBJECTS -->
+
+                <section class="onboarding-section">
+
+                    <div class="section-heading">
+                        <span class="section-number">02</span>
+
+                        <div>
+                            <h2>Your studies</h2>
+                            <p>Which subjects are you currently studying?</p>
+                        </div>
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label for="subjects">
+                            Your subjects
+                        </label>
+
+                        <textarea
+                            id="subjects"
+                            name="subjects"
+                            rows="3"
+                            placeholder="For example: Mathematics, Science, English, History..."
+                            required></textarea>
+
+                        <p class="input-hint">
+                            Separate each subject with a comma.
+                        </p>
+
+                    </div>
+
+                </section>
+
+
+                <!-- HOBBIES -->
+
+                <section class="onboarding-section">
+
+                    <div class="section-heading">
+                        <span class="section-number">03</span>
+
+                        <div>
+                            <h2>Your interests</h2>
+                            <p>What do you enjoy doing outside school?</p>
+                        </div>
+                    </div>
+
+
+                    <fieldset class="choice-fieldset">
+
+                        <legend class="field-legend">
+                            Choose your hobbies
+                        </legend>
+
+                        <div class="choice-grid">
+
+                            <label class="choice-option">
+                                <input type="checkbox" name="hobbies" value="Music">
+                                <span>🎵 Music</span>
+                            </label>
+
+                            <label class="choice-option">
+                                <input type="checkbox" name="hobbies" value="Art">
+                                <span>🎨 Art</span>
+                            </label>
+
+                            <label class="choice-option">
+                                <input type="checkbox" name="hobbies" value="Reading">
+                                <span>📚 Reading</span>
+                            </label>
+
+                            <label class="choice-option">
+                                <input type="checkbox" name="hobbies" value="Coding">
+                                <span>💻 Coding</span>
+                            </label>
+
+                            <label class="choice-option">
+                                <input type="checkbox" name="hobbies" value="Sports">
+                                <span>⚽ Sports</span>
+                            </label>
+
+                            <label class="choice-option">
+                                <input type="checkbox" name="hobbies" value="Dance">
+                                <span>💃 Dance</span>
+                            </label>
+
+                            <label class="choice-option">
+                                <input type="checkbox" name="hobbies" value="Writing">
+                                <span>✍️ Writing</span>
+                            </label>
+
+                            <label class="choice-option">
+                                <input type="checkbox" name="hobbies" value="Other">
+                                <span>✨ Other</span>
+                            </label>
+
+                        </div>
+
+                    </fieldset>
+
+
+                    <div class="form-group">
+
+                        <label for="otherHobbies">
+                            Any other interests? <span class="optional-label">Optional</span>
+                        </label>
+
+                        <input
+                            type="text"
+                            id="otherHobbies"
+                            name="otherHobbies"
+                            placeholder="Tell us about them">
+
+                    </div>
+
+                </section>
+
+
+                <!-- SCHOOL SCHEDULE -->
+
+                <section class="onboarding-section">
+
+                    <div class="section-heading">
+                        <span class="section-number">04</span>
+
+                        <div>
+                            <h2>Your school routine</h2>
+                            <p>When are you usually at school?</p>
+                        </div>
+                    </div>
+
+
+                    <div class="form-row">
+
+                        <div class="form-group">
+
+                            <label for="schoolStart">
+                                School starts
+                            </label>
+
+                            <input
+                                type="time"
+                                id="schoolStart"
+                                name="schoolStart">
+
+                        </div>
+
+
+                        <div class="form-group">
+
+                            <label for="schoolEnd">
+                                School ends
+                            </label>
+
+                            <input
+                                type="time"
+                                id="schoolEnd"
+                                name="schoolEnd">
+
+                        </div>
+
+                    </div>
+
+
+                    <fieldset class="choice-fieldset">
+
+                        <legend class="field-legend">
+                            Which days do you attend school?
+                        </legend>
+
+                        <div class="days-grid">
+
+                            <label class="choice-option">
+                                <input type="checkbox" name="schoolDays" value="Monday">
+                                <span>Mon</span>
+                            </label>
+
+                            <label class="choice-option">
+                                <input type="checkbox" name="schoolDays" value="Tuesday">
+                                <span>Tue</span>
+                            </label>
+
+                            <label class="choice-option">
+                                <input type="checkbox" name="schoolDays" value="Wednesday">
+                                <span>Wed</span>
+                            </label>
+
+                            <label class="choice-option">
+                                <input type="checkbox" name="schoolDays" value="Thursday">
+                                <span>Thu</span>
+                            </label>
+
+                            <label class="choice-option">
+                                <input type="checkbox" name="schoolDays" value="Friday">
+                                <span>Fri</span>
+                            </label>
+
+                            <label class="choice-option">
+                                <input type="checkbox" name="schoolDays" value="Saturday">
+                                <span>Sat</span>
+                            </label>
+
+                            <label class="choice-option">
+                                <input type="checkbox" name="schoolDays" value="Sunday">
+                                <span>Sun</span>
+                            </label>
+
+                        </div>
+
+                    </fieldset>
+
+                </section>
+
+
+                <!-- SLEEP SCHEDULE -->
+
+                <section class="onboarding-section">
+
+                    <div class="section-heading">
+                        <span class="section-number">05</span>
+
+                        <div>
+                            <h2>Your sleep routine</h2>
+                            <p>Help us understand your usual sleep schedule.</p>
+                        </div>
+                    </div>
+
+
+                    <div class="form-row">
+
+                        <div class="form-group">
+
+                            <label for="sleepTime">
+                                Usual bedtime
+                            </label>
+
+                            <input
+                                type="time"
+                                id="sleepTime"
+                                name="sleepTime">
+
+                        </div>
+
+
+                        <div class="form-group">
+
+                            <label for="wakeTime">
+                                Usual wake-up time
+                            </label>
+
+                            <input
+                                type="time"
+                                id="wakeTime"
+                                name="wakeTime">
+
+                        </div>
+
+                    </div>
+
+                </section>
+
+
+                <!-- HOBBY GOALS -->
+
+                <section class="onboarding-section">
+
+                    <div class="section-heading">
+                        <span class="section-number">06</span>
+
+                        <div>
+                            <h2>Protect your free time</h2>
+                            <p>How much time would you like for your hobbies?</p>
+                        </div>
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label for="hobbyGoal">
+                            Weekly hobby goal
+                        </label>
+
+                        <select id="hobbyGoal" name="hobbyGoal">
+
+                            <option value="">Choose a weekly goal</option>
+
+                            <option value="2">2 hours per week</option>
+
+                            <option value="3">3 hours per week</option>
+
+                            <option value="5">5 hours per week</option>
+
+                            <option value="7">7 hours per week</option>
+
+                            <option value="10">10 hours per week</option>
+
+                        </select>
+
+                        <p class="input-hint">
+                            You can change this whenever you like.
+                        </p>
+
+                    </div>
+
+                </section>
+
+
+                <!-- SUBMIT -->
+
+                <div class="onboarding-actions">
+
+                    <button
+                        type="submit"
+                        class="btn btn-primary onboarding-submit"
+                        id="onboardingSubmit">
+
+                        Finish Setup
+                        <span aria-hidden="true">→</span>
+
+                    </button>
+
+                    <p>
+                        Your routine can always be updated later.
+                    </p>
+
+                </div>
+
+            </form>
+
+        </section>
+
+    </main>
+
+
+    <footer class="auth-footer">
+        <p>
+            © <span id="currentYear"></span> balanceyourtime.
+            All rights reserved.
+        </p>
+    </footer>
+
+</body>
+</html>
