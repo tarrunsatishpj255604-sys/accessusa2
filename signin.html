@@ -6,12 +6,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <title>Sign In | balanceyourtime.</title>
-
     <meta name="description" content="Sign in to your balanceyourtime. account.">
+
+    <link rel="icon" type="image/svg+xml" href="./favicon.svg">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
     <link rel="stylesheet" href="style.css">
@@ -23,52 +23,43 @@
 
     <header class="auth-navbar">
         <div class="container auth-nav-container">
-
             <a href="index.html" class="logo">
                 balanceyourtime<span>.</span>
             </a>
 
             <a href="index.html" class="back-link">
-                ← Back to home
+                <span aria-hidden="true">←</span> Back to home
             </a>
-
         </div>
     </header>
-
 
     <main class="auth-main">
 
         <section class="auth-card">
 
             <div class="auth-heading">
-
-                <div class="auth-brand-icon">b.</div>
+                <div class="auth-brand-icon">b<span>.</span></div>
 
                 <p class="auth-eyebrow">WELCOME BACK</p>
 
                 <h1>Good to see you again.</h1>
 
                 <p>
-                    Sign in to continue organising your day
-                    and making time for what matters.
+                    Your time, your priorities.
+                    Pick up right where you left off.
                 </p>
-
             </div>
 
-
-            <div
-                class="auth-message"
-                id="authMessage"
-                role="alert"
-                aria-live="polite"
-                hidden>
+            <div class="auth-message"
+                 id="authMessage"
+                 role="alert"
+                 aria-live="polite"
+                 hidden>
             </div>
 
-
-            <button
-                type="button"
-                class="google-button"
-                id="googleSignIn">
+            <button type="button"
+                    class="google-button"
+                    id="googleSignIn">
 
                 <svg viewBox="0 0 48 48" aria-hidden="true">
                     <path fill="#EA4335" d="M24 9.5c3.54 0 6.71 1.22 9.21 3.6l6.85-6.85C35.91 2.38 30.47 0 24 0 14.62 0 6.51 5.38 2.56 13.22l7.98 6.19C12.43 13.72 17.74 9.5 24 9.5Z"/>
@@ -78,9 +69,7 @@
                 </svg>
 
                 Continue with Google
-
             </button>
-
 
             <div class="auth-divider">
                 <span></span>
@@ -88,11 +77,9 @@
                 <span></span>
             </div>
 
-
             <form id="signInForm">
 
                 <div class="form-group">
-
                     <label for="signinEmail">Email address</label>
 
                     <input
@@ -102,12 +89,9 @@
                         placeholder="you@example.com"
                         autocomplete="email"
                         required>
-
                 </div>
 
-
                 <div class="form-group">
-
                     <div class="label-row">
                         <label for="signinPassword">Password</label>
 
@@ -117,7 +101,6 @@
                     </div>
 
                     <div class="password-wrapper">
-
                         <input
                             type="password"
                             id="signinPassword"
@@ -133,11 +116,8 @@
                             aria-label="Show password">
                             Show
                         </button>
-
                     </div>
-
                 </div>
-
 
                 <button
                     type="submit"
@@ -146,17 +126,14 @@
 
                     Sign In
                     <span aria-hidden="true">→</span>
-
                 </button>
 
             </form>
-
 
             <p class="auth-switch">
                 Don't have an account?
                 <a href="signup.html">Create one</a>
             </p>
-
 
             <p class="auth-legal">
                 By continuing, you agree to use balanceyourtime.
@@ -167,12 +144,8 @@
 
     </main>
 
-
     <footer class="auth-footer">
-        <p>
-            © <span id="currentYear"></span> balanceyourtime.
-            All rights reserved.
-        </p>
+        <p>Made for AccessUSA</p>
     </footer>
 
 </body>
