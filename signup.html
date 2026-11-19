@@ -1,0 +1,184 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Create Account | balanceyourtime.</title>
+    <meta name="description" content="Create your balanceyourtime. account.">
+
+    <link rel="icon" type="image/svg+xml" href="./favicon.svg">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="style.css">
+
+    <script type="module" src="signup.js"></script>
+</head>
+
+<body class="auth-page">
+
+    <header class="auth-navbar">
+        <div class="container auth-nav-container">
+
+            <a href="index.html" class="logo">
+                balanceyourtime<span>.</span>
+            </a>
+
+            <a href="index.html" class="back-link">
+                ← Back to home
+            </a>
+
+        </div>
+    </header>
+
+    <main class="auth-main">
+
+        <section class="auth-card">
+
+            <div class="auth-heading">
+
+                <p class="auth-eyebrow">GET STARTED</p>
+
+                <h1>Create your account.</h1>
+
+                <p>
+                    Make room for what matters.
+                    Start organising your time today.
+                </p>
+
+            </div>
+
+            <div
+                class="auth-message"
+                id="authMessage"
+                role="alert"
+                aria-live="polite"
+                hidden>
+            </div>
+
+            <form id="signUpForm">
+
+                <div class="form-group">
+
+                    <label for="signupName">Full name</label>
+
+                    <input
+                        type="text"
+                        id="signupName"
+                        name="name"
+                        placeholder="Your name"
+                        autocomplete="name"
+                        required>
+
+                </div>
+
+                <div class="form-group">
+
+                    <label for="signupEmail">Email address</label>
+
+                    <input
+                        type="email"
+                        id="signupEmail"
+                        name="email"
+                        placeholder="you@example.com"
+                        autocomplete="email"
+                        required>
+
+                </div>
+
+                <div class="form-group">
+
+                    <label for="signupPassword">Password</label>
+
+                    <div class="password-wrapper">
+
+                        <input
+                            type="password"
+                            id="signupPassword"
+                            name="password"
+                            placeholder="Create a password"
+                            autocomplete="new-password"
+                            minlength="8"
+                            required>
+
+                        <button
+                            type="button"
+                            class="password-toggle"
+                            data-toggle-password="signupPassword"
+                            aria-label="Show password">
+                            Show
+                        </button>
+
+                    </div>
+
+                    <p class="auth-hint">
+                        Use at least 8 characters.
+                    </p>
+
+                </div>
+
+                <div class="form-group">
+
+                    <label for="confirmPassword">
+                        Confirm password
+                    </label>
+
+                    <div class="password-wrapper">
+
+                        <input
+                            type="password"
+                            id="confirmPassword"
+                            name="confirmPassword"
+                            placeholder="Enter your password again"
+                            autocomplete="new-password"
+                            required>
+
+                        <button
+                            type="button"
+                            class="password-toggle"
+                            data-toggle-password="confirmPassword"
+                            aria-label="Show password">
+                            Show
+                        </button>
+
+                    </div>
+
+                </div>
+
+                <button
+                    type="submit"
+                    class="btn btn-primary auth-submit"
+                    id="signUpSubmit">
+
+                    Create Account
+                    <span aria-hidden="true">→</span>
+
+                </button>
+
+            </form>
+
+            <p class="auth-switch">
+                Already have an account?
+                <a href="signin.html">Sign in</a>
+            </p>
+
+            <p class="auth-legal">
+                By creating an account, you agree to use
+                balanceyourtime. responsibly and respectfully.
+            </p>
+
+        </section>
+
+    </main>
+
+    <footer class="auth-footer">
+        <p>Made for AccessUSA</p>
+    </footer>
+
+</body>
+</html>
