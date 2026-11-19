@@ -1,0 +1,738 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Study Planner | balanceyourtime.</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="style.css">
+    <script type="module" src="study.js"></script>
+</head>
+
+<body class="dashboard-page">
+
+<div class="dashboard-layout">
+
+    <!-- SIDEBAR -->
+    <aside class="sidebar" id="sidebar">
+
+        <a href="dashboard.html" class="logo sidebar-logo">
+            balanceyourtime<span>.</span>
+        </a>
+
+        <div class="sidebar-section">
+            <p class="sidebar-label">WORKSPACE</p>
+
+            <nav class="sidebar-nav" aria-label="Main navigation">
+                <a href="dashboard.html" class="sidebar-link">
+                    <span class="nav-icon">⌂</span><span>Overview</span>
+                </a>
+                <a href="schedule.html" class="sidebar-link">
+                    <span class="nav-icon">▦</span><span>My Schedule</span>
+                </a>
+                <a href="tracker.html" class="sidebar-link">
+                    <span class="nav-icon">◷</span><span>Time Tracker</span>
+                </a>
+                <a href="hobbies.html" class="sidebar-link">
+                    <span class="nav-icon">♡</span><span>My Hobbies</span>
+                </a>
+                <a href="study.html" class="sidebar-link active" aria-current="page">
+                    <span class="nav-icon">▤</span><span>Study Planner</span>
+                </a>
+                <a href="reports.html" class="sidebar-link">
+                    <span class="nav-icon">▥</span><span>Progress Reports</span>
+                </a>
+                <a href="settings.html" class="sidebar-link">
+                    <span class="nav-icon">⚙</span><span>Settings</span>
+                </a>
+            </nav>
+        </div>
+
+        <div class="sidebar-bottom">
+            <div class="sidebar-tip">
+                <span class="tip-icon">✦</span>
+                <h3>Learn, don't just memorise.</h3>
+                <p>Understanding a topic matters more than simply marking it complete.</p>
+            </div>
+
+            <button type="button" class="sidebar-profile" id="sidebarProfile">
+                <div class="profile-avatar" id="sidebarAvatar">?</div>
+                <div class="profile-details">
+                    <strong id="sidebarUserName">Your account</strong>
+                    <small id="sidebarUserEmail">Loading profile...</small>
+                </div>
+                <span class="profile-menu-arrow">⌄</span>
+            </button>
+        </div>
+
+    </aside>
+
+
+    <!-- MAIN CONTENT -->
+    <main class="dashboard-main">
+
+        <!-- TOPBAR -->
+        <header class="dashboard-topbar">
+
+            <div class="topbar-left">
+                <button type="button" class="mobile-menu-button"
+                    id="sidebarToggle" aria-label="Open navigation"
+                    aria-expanded="false" aria-controls="sidebar">☰</button>
+
+                <div class="breadcrumb">
+                    <span>Workspace</span>
+                    <span>/</span>
+                    <strong>Study Planner</strong>
+                </div>
+            </div>
+
+            <div class="topbar-actions">
+                <button type="button" class="icon-button"
+                    id="themeToggle" aria-label="Switch theme">◐</button>
+
+                <button type="button" class="icon-button"
+                    id="notificationsButton" aria-label="Notifications">♧</button>
+
+                <div class="topbar-profile">
+                    <button type="button" class="topbar-avatar"
+                        id="profileMenuToggle" aria-label="Open account menu"
+                        aria-expanded="false">
+                        <span id="topbarAvatar">?</span>
+                    </button>
+
+                    <div class="account-dropdown" id="accountDropdown" hidden>
+                        <div class="dropdown-user">
+                            <strong id="dropdownName">Your account</strong>
+                            <small id="dropdownEmail">Loading...</small>
+                        </div>
+                        <a href="settings.html">Account settings</a>
+                        <button type="button" id="signOutButton">Sign out</button>
+                    </div>
+                </div>
+            </div>
+
+        </header>
+
+
+        <div class="dashboard-content">
+
+            <!-- PAGE INTRO -->
+            <section class="page-heading-row">
+                <div>
+                    <p class="welcome-eyebrow">LEARN WITH PURPOSE</p>
+                    <h1>Study Planner</h1>
+                    <p>Organise your subjects, understand topics and stay on top of homework.</p>
+                </div>
+
+                <button type="button" class="btn btn-primary" id="addSubjectButton">
+                    + Add subject
+                </button>
+            </section>
+
+
+            <!-- SUMMARY CARDS -->
+            <section class="schedule-summary-grid">
+
+                <article class="summary-card">
+                    <span class="summary-card-label">MY SUBJECTS</span>
+                    <strong id="subjectCount">—</strong>
+                    <small>Subjects you're learning</small>
+                </article>
+
+                <article class="summary-card">
+                    <span class="summary-card-label">TOPICS COMPLETED</span>
+                    <strong id="completedTopicCount">—</strong>
+                    <small>Topics marked complete</small>
+                </article>
+
+                <article class="summary-card">
+                    <span class="summary-card-label">NEEDS PRACTICE</span>
+                    <strong id="practiceTopicCount">—</strong>
+                    <small>Topics to revisit</small>
+                </article>
+
+                <article class="summary-card">
+                    <span class="summary-card-label">UPCOMING HOMEWORK</span>
+                    <strong id="upcomingHomeworkCount">—</strong>
+                    <small>Assignments not yet completed</small>
+                </article>
+
+            </section>
+
+
+            <!-- SUBJECTS -->
+            <section class="dashboard-panel">
+
+                <div class="panel-header">
+                    <div>
+                        <h2>My subjects</h2>
+                        <p>Manage your subjects and follow your learning progress.</p>
+                    </div>
+
+                    <button type="button" class="text-link" id="addSubjectLink">
+                        + Add subject
+                    </button>
+                </div>
+
+                <div class="subject-grid" id="subjectList">
+
+                    <div class="empty-state" id="subjectsEmptyState">
+                        <div class="empty-state-icon">▤</div>
+                        <h3>Start with your subjects.</h3>
+                        <p>Add a subject to begin organising your topics and study sessions.</p>
+                        <button type="button" class="btn btn-secondary" id="emptyAddSubject">
+                            Add your first subject
+                        </button>
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- TOPIC MANAGER -->
+            <section class="dashboard-panel">
+
+                <div class="panel-header">
+                    <div>
+                        <h2>Topic manager</h2>
+                        <p>Keep track of what you've learned and what needs attention.</p>
+                    </div>
+
+                    <button type="button" class="btn btn-secondary" id="addTopicButton">
+                        + Add topic
+                    </button>
+                </div>
+
+                <div class="topic-filters">
+
+                    <div class="form-group">
+                        <label for="topicSubjectFilter">Subject</label>
+                        <select id="topicSubjectFilter">
+                            <option value="all">All subjects</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="topicStatusFilter">Understanding</label>
+                        <select id="topicStatusFilter">
+                            <option value="all">All levels</option>
+                            <option value="need_practice">Need more practice</option>
+                            <option value="partially_understood">Partially understood</option>
+                            <option value="fully_understood">Fully understood</option>
+                            <option value="not_checked">Not checked yet</option>
+                        </select>
+                    </div>
+
+                </div>
+
+                <div class="table-responsive">
+                    <table class="activity-table">
+
+                        <thead>
+                            <tr>
+                                <th>Topic</th>
+                                <th>Subject</th>
+                                <th>Understanding</th>
+                                <th>Status</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+
+                        <tbody id="topicTableBody">
+                            <tr id="topicsEmptyState">
+                                <td colspan="5">
+                                    <div class="empty-state">
+                                        <p>No topics added yet.</p>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+
+                    </table>
+                </div>
+
+            </section>
+
+
+            <!-- STUDY SESSIONS -->
+            <section class="dashboard-panel">
+
+                <div class="panel-header">
+                    <div>
+                        <h2>Study sessions</h2>
+                        <p>Plan your next revision or learning session.</p>
+                    </div>
+
+                    <button type="button" class="btn btn-secondary" id="addStudySessionButton">
+                        + Schedule session
+                    </button>
+                </div>
+
+                <div class="upcoming-list" id="studySessionList">
+
+                    <div class="empty-state" id="studySessionsEmpty">
+                        <div class="empty-state-icon">◷</div>
+                        <h3>No study sessions planned.</h3>
+                        <p>Schedule a session to give your learning a dedicated place in your day.</p>
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- HOMEWORK -->
+            <section class="dashboard-panel">
+
+                <div class="panel-header">
+                    <div>
+                        <h2>Homework and assignments</h2>
+                        <p>Keep upcoming work organised without losing track of deadlines.</p>
+                    </div>
+
+                    <button type="button" class="btn btn-secondary" id="addHomeworkButton">
+                        + Add homework
+                    </button>
+                </div>
+
+                <div class="homework-list" id="homeworkList">
+
+                    <div class="empty-state" id="homeworkEmptyState">
+                        <div class="empty-state-icon">✎</div>
+                        <h3>Nothing added yet.</h3>
+                        <p>Your homework and upcoming deadlines will appear here.</p>
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- UNDERSTANDING CHECK -->
+            <section class="dashboard-panel understanding-panel">
+
+                <div class="panel-header">
+                    <div>
+                        <p class="welcome-eyebrow">GO BEYOND COMPLETION</p>
+                        <h2>Understanding check</h2>
+                        <p>Finishing a topic is one thing. Understanding it is another.</p>
+                    </div>
+                </div>
+
+                <div class="understanding-intro">
+                    <div class="understanding-icon">?</div>
+                    <div>
+                        <h3>Test your understanding</h3>
+                        <p>Choose a topic and reflect on what you've actually learned.</p>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="understandingTopic">Choose a topic</label>
+                    <select id="understandingTopic" required>
+                        <option value="">Select a topic</option>
+                    </select>
+                </div>
+
+                <div class="understanding-questions">
+
+                    <div class="understanding-question">
+                        <span>01</span>
+                        <div>
+                            <h3>Can you explain this topic in your own words?</h3>
+                            <p>Try explaining it without copying your notes.</p>
+                        </div>
+                    </div>
+
+                    <div class="understanding-question">
+                        <span>02</span>
+                        <div>
+                            <h3>Can you solve a question without looking at your notes?</h3>
+                            <p>See whether you can apply what you've learned independently.</p>
+                        </div>
+                    </div>
+
+                    <div class="understanding-question">
+                        <span>03</span>
+                        <div>
+                            <h3>Which part do you still find confusing?</h3>
+                            <p>Identifying gaps helps you decide what to revise next.</p>
+                        </div>
+                    </div>
+
+                </div>
+
+                <button type="button" class="btn btn-primary" id="openUnderstandingCheck">
+                    Complete understanding check →
+                </button>
+
+            </section>
+
+
+            <!-- RECENT CHECKS -->
+            <section class="dashboard-panel">
+
+                <div class="panel-header">
+                    <div>
+                        <h2>Recent understanding checks</h2>
+                        <p>Review your learning progress by topic.</p>
+                    </div>
+                </div>
+
+                <div class="table-responsive">
+                    <table class="activity-table">
+
+                        <thead>
+                            <tr>
+                                <th>Topic</th>
+                                <th>Subject</th>
+                                <th>Understanding level</th>
+                                <th>Last checked</th>
+                            </tr>
+                        </thead>
+
+                        <tbody id="understandingHistory">
+                            <tr id="understandingHistoryEmpty">
+                                <td colspan="4">
+                                    <div class="empty-state">
+                                        <p>Your completed checks will appear here.</p>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+
+                    </table>
+                </div>
+
+            </section>
+
+
+            <footer class="dashboard-footer">
+                <p>balanceyourtime. — Make time for what matters.</p>
+                <a href="settings.html">Settings</a>
+            </footer>
+
+        </div>
+    </main>
+</div>
+
+
+<!-- ADD SUBJECT DIALOG -->
+<dialog class="quick-add-dialog" id="subjectDialog">
+
+    <div class="dialog-header">
+        <div>
+            <p class="auth-eyebrow">YOUR LEARNING</p>
+            <h2 id="subjectDialogTitle">Add subject</h2>
+        </div>
+
+        <button type="button" class="dialog-close"
+            id="closeSubjectDialog" aria-label="Close dialog">×</button>
+    </div>
+
+    <form id="subjectForm">
+
+        <input type="hidden" id="subjectId">
+
+        <div class="form-group">
+            <label for="subjectName">Subject name</label>
+            <input type="text" id="subjectName"
+                placeholder="For example, Mathematics" maxlength="80" required>
+        </div>
+
+        <div class="form-group">
+            <label for="subjectDescription">
+                Description <span class="optional-label">Optional</span>
+            </label>
+            <textarea id="subjectDescription" rows="3"
+                maxlength="300" placeholder="Add some details..."></textarea>
+        </div>
+
+        <div class="auth-message" id="subjectFormMessage"
+            role="alert" aria-live="polite" hidden></div>
+
+        <div class="dialog-actions">
+            <button type="button" class="btn btn-secondary"
+                id="cancelSubject">Cancel</button>
+            <button type="submit" class="btn btn-primary"
+                id="saveSubject">Save subject</button>
+        </div>
+
+    </form>
+</dialog>
+
+
+<!-- ADD TOPIC DIALOG -->
+<dialog class="quick-add-dialog" id="topicDialog">
+
+    <div class="dialog-header">
+        <div>
+            <p class="auth-eyebrow">TOPIC MANAGER</p>
+            <h2 id="topicDialogTitle">Add topic</h2>
+        </div>
+
+        <button type="button" class="dialog-close"
+            id="closeTopicDialog" aria-label="Close dialog">×</button>
+    </div>
+
+    <form id="topicForm">
+
+        <input type="hidden" id="topicId">
+
+        <div class="form-group">
+            <label for="topicSubject">Subject</label>
+            <select id="topicSubject" required>
+                <option value="">Choose a subject</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label for="topicName">Topic name</label>
+            <input type="text" id="topicName"
+                placeholder="For example, Linear equations" maxlength="120" required>
+        </div>
+
+        <div class="form-group">
+            <label for="topicDueDate">
+                Revision date <span class="optional-label">Optional</span>
+            </label>
+            <input type="date" id="topicDueDate">
+        </div>
+
+        <div class="form-group">
+            <label for="topicCompletion">Completion status</label>
+            <select id="topicCompletion">
+                <option value="not_started">Not started</option>
+                <option value="in_progress">In progress</option>
+                <option value="completed">Completed</option>
+            </select>
+        </div>
+
+        <div class="auth-message" id="topicFormMessage"
+            role="alert" aria-live="polite" hidden></div>
+
+        <div class="dialog-actions">
+            <button type="button" class="btn btn-secondary"
+                id="cancelTopic">Cancel</button>
+            <button type="submit" class="btn btn-primary"
+                id="saveTopic">Save topic</button>
+        </div>
+
+    </form>
+</dialog>
+
+
+<!-- STUDY SESSION DIALOG -->
+<dialog class="quick-add-dialog" id="studySessionDialog">
+
+    <div class="dialog-header">
+        <div>
+            <p class="auth-eyebrow">STUDY PLANNER</p>
+            <h2>Schedule a study session</h2>
+        </div>
+
+        <button type="button" class="dialog-close"
+            id="closeStudySession" aria-label="Close dialog">×</button>
+    </div>
+
+    <form id="studySessionForm">
+
+        <div class="form-group">
+            <label for="sessionSubject">Subject</label>
+            <select id="sessionSubject" required>
+                <option value="">Choose a subject</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label for="sessionTopic">
+                Topic <span class="optional-label">Optional</span>
+            </label>
+            <select id="sessionTopic">
+                <option value="">Choose a topic</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label for="studySessionDate">Date</label>
+            <input type="date" id="studySessionDate" required>
+        </div>
+
+        <div class="form-row">
+            <div class="form-group">
+                <label for="studySessionStart">Start time</label>
+                <input type="time" id="studySessionStart" required>
+            </div>
+
+            <div class="form-group">
+                <label for="studySessionEnd">End time</label>
+                <input type="time" id="studySessionEnd" required>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="revisionReminder">Revision reminder</label>
+            <select id="revisionReminder">
+                <option value="none">No reminder</option>
+                <option value="5">5 minutes before</option>
+                <option value="15">15 minutes before</option>
+                <option value="30">30 minutes before</option>
+                <option value="60">1 hour before</option>
+            </select>
+        </div>
+
+        <div class="auth-message" id="studySessionMessage"
+            role="alert" aria-live="polite" hidden></div>
+
+        <div class="dialog-actions">
+            <button type="button" class="btn btn-secondary"
+                id="cancelStudySession">Cancel</button>
+            <button type="submit" class="btn btn-primary"
+                id="saveStudySession">Save session</button>
+        </div>
+
+    </form>
+</dialog>
+
+
+<!-- ADD HOMEWORK DIALOG -->
+<dialog class="quick-add-dialog" id="homeworkDialog">
+
+    <div class="dialog-header">
+        <div>
+            <p class="auth-eyebrow">ASSIGNMENTS</p>
+            <h2>Add homework</h2>
+        </div>
+
+        <button type="button" class="dialog-close"
+            id="closeHomeworkDialog" aria-label="Close dialog">×</button>
+    </div>
+
+    <form id="homeworkForm">
+
+        <div class="form-group">
+            <label for="homeworkTitle">Assignment title</label>
+            <input type="text" id="homeworkTitle"
+                maxlength="120" placeholder="What do you need to complete?" required>
+        </div>
+
+        <div class="form-group">
+            <label for="homeworkSubject">Subject</label>
+            <select id="homeworkSubject" required>
+                <option value="">Choose a subject</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label for="homeworkDueDate">Due date</label>
+            <input type="date" id="homeworkDueDate" required>
+        </div>
+
+        <div class="form-group">
+            <label for="homeworkDescription">
+                Description <span class="optional-label">Optional</span>
+            </label>
+            <textarea id="homeworkDescription" rows="3"
+                maxlength="500" placeholder="Add instructions or notes..."></textarea>
+        </div>
+
+        <div class="auth-message" id="homeworkFormMessage"
+            role="alert" aria-live="polite" hidden></div>
+
+        <div class="dialog-actions">
+            <button type="button" class="btn btn-secondary"
+                id="cancelHomework">Cancel</button>
+            <button type="submit" class="btn btn-primary"
+                id="saveHomework">Save homework</button>
+        </div>
+
+    </form>
+</dialog>
+
+
+<!-- UNDERSTANDING CHECK DIALOG -->
+<dialog class="quick-add-dialog" id="understandingDialog">
+
+    <div class="dialog-header">
+        <div>
+            <p class="auth-eyebrow">REFLECT ON YOUR LEARNING</p>
+            <h2>Understanding check</h2>
+        </div>
+
+        <button type="button" class="dialog-close"
+            id="closeUnderstandingDialog" aria-label="Close dialog">×</button>
+    </div>
+
+    <form id="understandingForm">
+
+        <input type="hidden" id="checkTopicId">
+
+        <div class="form-group">
+            <label for="checkExplain">Can you explain this topic in your own words?</label>
+            <textarea id="checkExplain" rows="3"
+                placeholder="Write a short explanation..." required></textarea>
+        </div>
+
+        <div class="form-group">
+            <label for="checkPractice">Can you solve a question without looking at your notes?</label>
+            <select id="checkPractice" required>
+                <option value="">Choose an answer</option>
+                <option value="yes">Yes, independently</option>
+                <option value="partly">Partly, with some difficulty</option>
+                <option value="no">Not yet</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label for="checkConfusing">Which part do you still find confusing?</label>
+            <textarea id="checkConfusing" rows="3"
+                placeholder="Write what you want to practise..." required></textarea>
+        </div>
+
+        <fieldset class="choice-fieldset">
+            <legend class="field-legend">How well do you understand this topic?</legend>
+
+            <div class="understanding-level-options">
+
+                <label class="choice-option">
+                    <input type="radio" name="understandingLevel"
+                        value="need_practice" required>
+                    <span>Need more practice</span>
+                </label>
+
+                <label class="choice-option">
+                    <input type="radio" name="understandingLevel"
+                        value="partially_understood">
+                    <span>Partially understood</span>
+                </label>
+
+                <label class="choice-option">
+                    <input type="radio" name="understandingLevel"
+                        value="fully_understood">
+                    <span>Fully understood</span>
+                </label>
+
+            </div>
+        </fieldset>
+
+        <div class="auth-message" id="understandingFormMessage"
+            role="alert" aria-live="polite" hidden></div>
+
+        <div class="dialog-actions">
+            <button type="button" class="btn btn-secondary"
+                id="cancelUnderstanding">Cancel</button>
+            <button type="submit" class="btn btn-primary"
+                id="saveUnderstanding">Save check</button>
+        </div>
+
+    </form>
+</dialog>
+
+</body>
+</html>
