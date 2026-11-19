@@ -2256,3 +2256,292 @@ textarea:focus-visible {
         animation-duration: .01ms !important;
     }
 }
+
+/* BALANCEYOURTIME — MINIMALIST + CYBER REDESIGN */
+
+:root {
+    --bg: #101116;
+    --bg-secondary: #15171e;
+    --surface: #1a1c24;
+    --surface-hover: #22252f;
+    --surface-2: #20232d;
+    --surface-3: #303440;
+
+    --primary: #927bff;
+    --primary-hover: #a797ff;
+    --secondary: #7baaff;
+    --blue: #7baaff;
+    --green: #63c9a1;
+
+    --text: #f0f0f5;
+    --text-secondary: #b0b2c0;
+    --text-muted: #85899a;
+    --muted: #a0a4b3;
+
+    --border: rgba(255,255,255,.075);
+    --purple-light: rgba(146,123,255,.10);
+    --blue-light: rgba(123,170,255,.09);
+
+    --radius: 13px;
+    --transition: .2s ease;
+    --shadow: 0 8px 25px rgba(0,0,0,.12);
+}
+
+/* GLOBAL */
+
+body {
+    background: var(--bg);
+}
+
+::selection {
+    background: rgba(146,123,255,.3);
+    color: white;
+}
+
+/* NAVIGATION */
+
+.navbar {
+    background: rgba(16,17,22,.96);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border);
+}
+
+.nav-link {
+    transition: color .2s ease;
+}
+
+.nav-link:hover {
+    color: var(--primary);
+}
+
+/* BUTTONS */
+
+.btn {
+    border-radius: 8px;
+}
+
+.btn-primary {
+    box-shadow: none;
+}
+
+.btn-primary:hover {
+    box-shadow: 0 0 18px rgba(146,123,255,.18);
+}
+
+/* HERO */
+
+.hero {
+    background: var(--bg);
+}
+
+.hero::before {
+    width: 400px;
+    height: 400px;
+    filter: blur(150px);
+    background: rgba(146,123,255,.035);
+}
+
+.hero::after {
+    background: transparent;
+}
+
+.hero h1 {
+    letter-spacing: -2.8px;
+}
+
+.hero h1 span {
+    color: var(--primary);
+}
+
+.hero-description {
+    color: #b0b2c0;
+}
+
+.hero-label {
+    background: rgba(146,123,255,.07);
+    border-color: rgba(146,123,255,.2);
+    color: #bdb1ff;
+}
+
+/* DASHBOARD PREVIEW */
+
+.preview-card {
+    background: #191b23;
+    border: 1px solid rgba(255,255,255,.09);
+    box-shadow: 0 15px 40px rgba(0,0,0,.16);
+}
+
+.preview-stat,
+.schedule-placeholder {
+    background: #20222b;
+    border-color: rgba(255,255,255,.06);
+}
+
+.preview-avatar {
+    background: #7867c5;
+}
+
+.floating-note {
+    background: #20222b;
+    border-color: var(--border);
+}
+
+/* SECTION HEADINGS */
+
+.intro-section,
+.how-section {
+    background: #15171d;
+}
+
+.intro-section {
+    border-color: var(--border);
+}
+
+.section-eyebrow {
+    color: #a895ff;
+}
+
+/* FEATURE CARDS */
+
+.feature-card,
+.step-card {
+    background: #1a1c24;
+    border: 1px solid rgba(255,255,255,.065);
+    box-shadow: none;
+}
+
+.feature-card:hover,
+.step-card:hover {
+    transform: translateY(-3px);
+    border-color: rgba(146,123,255,.3);
+}
+
+.feature-card h3,
+.step-card h3 {
+    color: #eeeeF5;
+}
+
+.feature-card p,
+.step-card p {
+    color: #a9abba;
+}
+
+/* ICONS */
+
+.purple-icon {
+    background: rgba(146,123,255,.11);
+    color: #b5a6ff;
+}
+
+.blue-icon {
+    background: rgba(123,170,255,.10);
+    color: #91baff;
+}
+
+/* CTA */
+
+.cta-section {
+    background: #12141b;
+}
+
+.cta-container h2 span {
+    color: var(--primary);
+}
+
+/* FOOTER */
+
+.footer {
+    background: #0d0e13;
+}
+
+/* DASHBOARD */
+
+.sidebar {
+    background: #15171e;
+}
+
+.dashboard-topbar {
+    background: rgba(16,17,22,.96);
+}
+
+.dashboard-panel,
+.overview-card,
+.summary-card {
+    background: #1a1c24;
+    border-color: rgba(255,255,255,.07);
+}
+
+.sidebar-link:hover,
+.sidebar-link.active {
+    background: rgba(146,123,255,.09);
+    color: #c2b5ff;
+}
+
+/* INPUTS */
+
+.form-group input,
+.form-group select,
+.form-group textarea,
+.form-control {
+    background: #14161d;
+    border-color: rgba(255,255,255,.09);
+    border-radius: 8px;
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+    border-color: var(--primary);
+}
+
+/* TABLES */
+
+.activity-table th {
+    background: #22242d;
+}
+
+/* PROGRESS */
+
+.progress-track {
+    background: #30323d;
+}
+
+.progress-fill {
+    background: var(--primary);
+}
+
+/* DIALOGS */
+
+.quick-add-dialog {
+    background: #1a1c24;
+}
+
+/* AUTH */
+
+.auth-card,
+.onboarding-card {
+    background: #191b23;
+    box-shadow: 0 12px 35px rgba(0,0,0,.15);
+}
+
+/* REMOVE EXCESSIVE GLOW AND MOVEMENT */
+
+.feature-card,
+.step-card,
+.overview-card,
+.summary-card,
+.dashboard-panel {
+    box-shadow: none;
+}
+
+/* MOBILE */
+
+@media (max-width: 650px) {
+    .nav-links {
+        background: #15171e;
+    }
+
+    .preview-card {
+        box-shadow: none;
+    }
+}
