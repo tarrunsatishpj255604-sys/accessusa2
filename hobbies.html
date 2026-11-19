@@ -1,0 +1,413 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Hobbies | balanceyourtime.</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="style.css">
+    <script type="module" src="hobbies.js"></script>
+</head>
+
+<body class="dashboard-page">
+
+<div class="dashboard-layout">
+
+    <!-- SIDEBAR -->
+    <aside class="sidebar" id="sidebar">
+        <a href="dashboard.html" class="logo sidebar-logo">
+            balanceyourtime<span>.</span>
+        </a>
+
+        <div class="sidebar-section">
+            <p class="sidebar-label">WORKSPACE</p>
+
+            <nav class="sidebar-nav" aria-label="Main navigation">
+                <a href="dashboard.html" class="sidebar-link">
+                    <span class="nav-icon">⌂</span><span>Overview</span>
+                </a>
+                <a href="schedule.html" class="sidebar-link">
+                    <span class="nav-icon">▦</span><span>My Schedule</span>
+                </a>
+                <a href="tracker.html" class="sidebar-link">
+                    <span class="nav-icon">◷</span><span>Time Tracker</span>
+                </a>
+                <a href="hobbies.html" class="sidebar-link active" aria-current="page">
+                    <span class="nav-icon">♡</span><span>My Hobbies</span>
+                </a>
+                <a href="study.html" class="sidebar-link">
+                    <span class="nav-icon">▤</span><span>Study Planner</span>
+                </a>
+                <a href="reports.html" class="sidebar-link">
+                    <span class="nav-icon">▥</span><span>Progress Reports</span>
+                </a>
+                <a href="settings.html" class="sidebar-link">
+                    <span class="nav-icon">⚙</span><span>Settings</span>
+                </a>
+            </nav>
+        </div>
+
+        <div class="sidebar-bottom">
+            <div class="sidebar-tip">
+                <span class="tip-icon">✦</span>
+                <h3>Your interests matter.</h3>
+                <p>Make space for the things you love doing.</p>
+            </div>
+
+            <button type="button" class="sidebar-profile" id="sidebarProfile">
+                <div class="profile-avatar" id="sidebarAvatar">?</div>
+                <div class="profile-details">
+                    <strong id="sidebarUserName">Your account</strong>
+                    <small id="sidebarUserEmail">Loading profile...</small>
+                </div>
+                <span class="profile-menu-arrow">⌄</span>
+            </button>
+        </div>
+    </aside>
+
+    <!-- MAIN -->
+    <main class="dashboard-main">
+
+        <header class="dashboard-topbar">
+            <div class="topbar-left">
+                <button type="button" class="mobile-menu-button"
+                    id="sidebarToggle" aria-label="Open navigation"
+                    aria-expanded="false" aria-controls="sidebar">☰</button>
+
+                <div class="breadcrumb">
+                    <span>Workspace</span><span>/</span>
+                    <strong>My Hobbies</strong>
+                </div>
+            </div>
+
+            <div class="topbar-actions">
+                <button type="button" class="icon-button"
+                    id="themeToggle" aria-label="Switch theme">◐</button>
+
+                <button type="button" class="icon-button"
+                    id="notificationsButton" aria-label="Notifications">♧</button>
+
+                <div class="topbar-profile">
+                    <button type="button" class="topbar-avatar"
+                        id="profileMenuToggle" aria-label="Open account menu"
+                        aria-expanded="false">
+                        <span id="topbarAvatar">?</span>
+                    </button>
+
+                    <div class="account-dropdown" id="accountDropdown" hidden>
+                        <div class="dropdown-user">
+                            <strong id="dropdownName">Your account</strong>
+                            <small id="dropdownEmail">Loading...</small>
+                        </div>
+                        <a href="settings.html">Account settings</a>
+                        <button type="button" id="signOutButton">Sign out</button>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <div class="dashboard-content">
+
+            <!-- INTRO -->
+            <section class="page-heading-row">
+                <div>
+                    <p class="welcome-eyebrow">YOUR TIME, YOUR INTERESTS</p>
+                    <h1>Hobby Protector</h1>
+                    <p>Your hobbies deserve a place in your schedule too.</p>
+                </div>
+
+                <button type="button" class="btn btn-primary" id="addHobbyButton">
+                    + Add a hobby
+                </button>
+            </section>
+
+            <!-- WEEKLY OVERVIEW -->
+            <section class="schedule-summary-grid">
+                <article class="summary-card">
+                    <span class="summary-card-label">HOBBY TIME THIS WEEK</span>
+                    <strong id="weeklyHobbyTime">—</strong>
+                    <small>Time spent on your interests</small>
+                </article>
+
+                <article class="summary-card">
+                    <span class="summary-card-label">ACTIVE HOBBIES</span>
+                    <strong id="activeHobbyCount">—</strong>
+                    <small>Your saved hobbies</small>
+                </article>
+
+                <article class="summary-card">
+                    <span class="summary-card-label">SESSIONS COMPLETED</span>
+                    <strong id="completedHobbySessions">—</strong>
+                    <small>This week</small>
+                </article>
+
+                <article class="summary-card">
+                    <span class="summary-card-label">WEEKLY GOAL</span>
+                    <strong id="weeklyGoalProgress">—</strong>
+                    <small>Your progress towards your goal</small>
+                </article>
+            </section>
+
+            <!-- GOAL PROGRESS -->
+            <section class="dashboard-panel">
+                <div class="panel-header">
+                    <div>
+                        <h2>Your weekly hobby goal</h2>
+                        <p>Track the time you've made for your interests.</p>
+                    </div>
+                    <button type="button" class="text-link" id="editHobbyGoal">
+                        Edit goal
+                    </button>
+                </div>
+
+                <div class="hobby-goal-content">
+                    <div class="hobby-goal-values">
+                        <strong id="hobbyGoalTime">—</strong>
+                        <span id="hobbyGoalTarget">Weekly target not set</span>
+                    </div>
+
+                    <div class="progress-track">
+                        <div class="progress-fill" id="hobbyGoalBar"></div>
+                    </div>
+
+                    <p id="hobbyGoalMessage">
+                        Add a hobby and set a weekly goal to get started.
+                    </p>
+                </div>
+            </section>
+
+            <!-- MY HOBBIES -->
+            <section class="dashboard-panel">
+                <div class="panel-header">
+                    <div>
+                        <h2>My hobbies</h2>
+                        <p>Your saved interests and their weekly progress.</p>
+                    </div>
+                </div>
+
+                <div class="hobby-grid" id="hobbyList">
+                    <div class="empty-state" id="hobbiesEmptyState">
+                        <div class="empty-state-icon">♡</div>
+                        <h3>What do you love doing?</h3>
+                        <p>Add your first hobby to start protecting time for it.</p>
+                        <button type="button" class="btn btn-secondary"
+                            id="emptyAddHobbyButton">Add your first hobby</button>
+                    </div>
+                </div>
+            </section>
+
+            <!-- FREE TIME SUGGESTIONS -->
+            <section class="dashboard-panel">
+                <div class="panel-header">
+                    <div>
+                        <h2>Make room for your interests</h2>
+                        <p>Explore available time without sacrificing sleep or essential responsibilities.</p>
+                    </div>
+                    <button type="button" class="btn btn-secondary"
+                        id="findFreeTimeButton">Find free time</button>
+                </div>
+
+                <div class="free-time-results" id="freeTimeSuggestions">
+                    <div class="empty-state" id="freeTimeEmptyState">
+                        <div class="empty-state-icon">✦</div>
+                        <h3>Find a little room for what you enjoy.</h3>
+                        <p>Suggestions will be based on your saved schedule and priorities.</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- HOBBY SESSION HISTORY -->
+            <section class="dashboard-panel">
+                <div class="panel-header">
+                    <div>
+                        <h2>Recent hobby sessions</h2>
+                        <p>Look back at the time you've spent on your interests.</p>
+                    </div>
+                    <button type="button" class="btn btn-secondary"
+                        id="addHobbySessionButton">+ Add session</button>
+                </div>
+
+                <div class="table-responsive">
+                    <table class="activity-table">
+                        <thead>
+                            <tr>
+                                <th>Hobby</th>
+                                <th>Date</th>
+                                <th>Duration</th>
+                                <th>Notes</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody id="hobbySessionHistory">
+                            <tr id="hobbySessionsEmpty">
+                                <td colspan="5">
+                                    <div class="empty-state">
+                                        <p>No hobby sessions recorded yet.</p>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <footer class="dashboard-footer">
+                <p>balanceyourtime. — Make time for what matters.</p>
+                <a href="settings.html">Settings</a>
+            </footer>
+
+        </div>
+    </main>
+</div>
+
+<!-- ADD / EDIT HOBBY DIALOG -->
+<dialog class="quick-add-dialog" id="hobbyDialog">
+    <div class="dialog-header">
+        <div>
+            <p class="auth-eyebrow">HOBBY PROTECTOR</p>
+            <h2 id="hobbyDialogTitle">Add a hobby</h2>
+        </div>
+        <button type="button" class="dialog-close"
+            id="closeHobbyDialog" aria-label="Close dialog">×</button>
+    </div>
+
+    <form id="hobbyForm">
+        <input type="hidden" id="hobbyId">
+
+        <div class="form-group">
+            <label for="hobbyName">Hobby name</label>
+            <input type="text" id="hobbyName"
+                placeholder="For example, Piano" maxlength="60" required>
+        </div>
+
+        <div class="form-group">
+            <label for="hobbyCategory">Category</label>
+            <select id="hobbyCategory" required>
+                <option value="">Choose a category</option>
+                <option value="Music">Music</option>
+                <option value="Art">Art</option>
+                <option value="Reading">Reading</option>
+                <option value="Coding">Coding</option>
+                <option value="Sports">Sports</option>
+                <option value="Dance">Dance</option>
+                <option value="Writing">Writing</option>
+                <option value="Other">Other</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label for="hobbyWeeklyGoal">Weekly goal (hours)</label>
+            <input type="number" id="hobbyWeeklyGoal"
+                min="0.5" max="40" step="0.5" placeholder="e.g. 3" required>
+        </div>
+
+        <div class="form-group">
+            <label for="hobbyDescription">
+                Description <span class="optional-label">Optional</span>
+            </label>
+            <textarea id="hobbyDescription" rows="3"
+                maxlength="300" placeholder="What do you enjoy about it?"></textarea>
+        </div>
+
+        <div class="auth-message" id="hobbyFormMessage"
+            role="alert" aria-live="polite" hidden></div>
+
+        <div class="dialog-actions">
+            <button type="button" class="btn btn-secondary"
+                id="cancelHobby">Cancel</button>
+            <button type="submit" class="btn btn-primary"
+                id="saveHobby">Save hobby</button>
+        </div>
+    </form>
+</dialog>
+
+<!-- ADD HOBBY SESSION DIALOG -->
+<dialog class="quick-add-dialog" id="hobbySessionDialog">
+    <div class="dialog-header">
+        <div>
+            <p class="auth-eyebrow">HOBBY SESSION</p>
+            <h2>Record a session</h2>
+        </div>
+        <button type="button" class="dialog-close"
+            id="closeHobbySession" aria-label="Close dialog">×</button>
+    </div>
+
+    <form id="hobbySessionForm">
+        <div class="form-group">
+            <label for="sessionHobby">Hobby</label>
+            <select id="sessionHobby" required>
+                <option value="">Choose a saved hobby</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label for="sessionDate">Date</label>
+            <input type="date" id="sessionDate" required>
+        </div>
+
+        <div class="form-row">
+            <div class="form-group">
+                <label for="sessionStart">Start time</label>
+                <input type="time" id="sessionStart" required>
+            </div>
+            <div class="form-group">
+                <label for="sessionEnd">End time</label>
+                <input type="time" id="sessionEnd" required>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="sessionNotes">Notes <span class="optional-label">Optional</span></label>
+            <textarea id="sessionNotes" rows="3"
+                maxlength="300" placeholder="How did your session go?"></textarea>
+        </div>
+
+        <div class="auth-message" id="sessionFormMessage"
+            role="alert" aria-live="polite" hidden></div>
+
+        <div class="dialog-actions">
+            <button type="button" class="btn btn-secondary"
+                id="cancelHobbySession">Cancel</button>
+            <button type="submit" class="btn btn-primary"
+                id="saveHobbySession">Save session</button>
+        </div>
+    </form>
+</dialog>
+
+<!-- EDIT WEEKLY GOAL DIALOG -->
+<dialog class="quick-add-dialog" id="hobbyGoalDialog">
+    <div class="dialog-header">
+        <div>
+            <p class="auth-eyebrow">YOUR WEEKLY GOAL</p>
+            <h2>Set your hobby goal</h2>
+        </div>
+        <button type="button" class="dialog-close"
+            id="closeHobbyGoal" aria-label="Close dialog">×</button>
+    </div>
+
+    <form id="hobbyGoalForm">
+        <div class="form-group">
+            <label for="weeklyGoalInput">Weekly target (hours)</label>
+            <input type="number" id="weeklyGoalInput"
+                min="0.5" max="60" step="0.5" required>
+        </div>
+
+        <div class="auth-message" id="goalFormMessage"
+            role="alert" aria-live="polite" hidden></div>
+
+        <div class="dialog-actions">
+            <button type="button" class="btn btn-secondary"
+                id="cancelHobbyGoal">Cancel</button>
+            <button type="submit" class="btn btn-primary"
+                id="saveHobbyGoal">Save goal</button>
+        </div>
+    </form>
+</dialog>
+
+</body>
+</html>
