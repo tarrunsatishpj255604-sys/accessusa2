@@ -17,6 +17,7 @@ form.addEventListener("submit", async (event) => {
     const email = document.getElementById("signinEmail").value.trim();
     const password = document.getElementById("signinPassword").value;
 
+    message.hidden = true;
     submitButton.disabled = true;
     submitButton.textContent = "Signing in...";
 
@@ -32,6 +33,7 @@ form.addEventListener("submit", async (event) => {
 
     } catch (error) {
         showMessage(error.message);
+
     } finally {
         submitButton.disabled = false;
         submitButton.innerHTML =
@@ -39,7 +41,7 @@ form.addEventListener("submit", async (event) => {
     }
 });
 
-// Show and hide password
+// Show / hide password
 document.querySelectorAll("[data-toggle-password]").forEach(button => {
     button.addEventListener("click", () => {
         const input = document.getElementById(
@@ -48,9 +50,15 @@ document.querySelectorAll("[data-toggle-password]").forEach(button => {
 
         if (!input) return;
 
-        const showing = input.type === "text";
-        input.type = showing ? "password" : "text";
-        button.textContent = showing ? "Show" : "Hide";
+        const isVisible = input.type === "text";
+
+        input.type = isVisible ? "password" : "text";
+        button.textContent = isVisible ? "Show" : "Hide";
+
+        button.setAttribute(
+            "aria-label",
+            isVisible ? "Show password" : "Hide password"
+        );
     });
 });
 
@@ -59,17 +67,24 @@ const googleButton = document.getElementById("googleSignIn");
 
 if (googleButton) {
     googleButton.addEventListener("click", async () => {
-        const { error } = await supabase.auth.signInWithOAuth({
-            provider: "google",
-            options: {
-                redirectTo: window.location.origin +
-                    window.location.pathname.replace(
-                        "signin.html",
-                        "dashboard.html"
-                    )
-            }
-        });
+        googleButton.disabled = true;
 
-        if (error) showMessage(error.message);
+        try {
+            const { error } = await supabase.auth.signInWithOAuth({
+                provider: "google",
+                options: {
+                    redirectTo: new URL(
+                        "dashboard.html",
+                        window.location.href
+                    ).href
+                }
+            });
+
+            if (error) throw error;
+
+        } catch (error) {
+            showMessage(error.message);
+            googleButton.disabled = false;
+        }
     });
 }
