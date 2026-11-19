@@ -1,0 +1,423 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Time Tracker | balanceyourtime.</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="style.css">
+    <script type="module" src="tracker.js"></script>
+</head>
+
+<body class="dashboard-page">
+
+<div class="dashboard-layout">
+
+    <!-- SIDEBAR -->
+    <aside class="sidebar" id="sidebar">
+
+        <a href="dashboard.html" class="logo sidebar-logo">
+            balanceyourtime<span>.</span>
+        </a>
+
+        <div class="sidebar-section">
+            <p class="sidebar-label">WORKSPACE</p>
+
+            <nav class="sidebar-nav" aria-label="Main navigation">
+                <a href="dashboard.html" class="sidebar-link">
+                    <span class="nav-icon">⌂</span>
+                    <span>Overview</span>
+                </a>
+
+                <a href="schedule.html" class="sidebar-link">
+                    <span class="nav-icon">▦</span>
+                    <span>My Schedule</span>
+                </a>
+
+                <a href="tracker.html" class="sidebar-link active" aria-current="page">
+                    <span class="nav-icon">◷</span>
+                    <span>Time Tracker</span>
+                </a>
+
+                <a href="hobbies.html" class="sidebar-link">
+                    <span class="nav-icon">♡</span>
+                    <span>My Hobbies</span>
+                </a>
+
+                <a href="study.html" class="sidebar-link">
+                    <span class="nav-icon">▤</span>
+                    <span>Study Planner</span>
+                </a>
+
+                <a href="reports.html" class="sidebar-link">
+                    <span class="nav-icon">▥</span>
+                    <span>Progress Reports</span>
+                </a>
+
+                <a href="settings.html" class="sidebar-link">
+                    <span class="nav-icon">⚙</span>
+                    <span>Settings</span>
+                </a>
+            </nav>
+        </div>
+
+        <div class="sidebar-bottom">
+            <div class="sidebar-tip">
+                <span class="tip-icon">✦</span>
+                <h3>Every minute tells a story.</h3>
+                <p>Track your time to understand your daily routine.</p>
+            </div>
+
+            <button type="button" class="sidebar-profile" id="sidebarProfile">
+                <div class="profile-avatar" id="sidebarAvatar">?</div>
+                <div class="profile-details">
+                    <strong id="sidebarUserName">Your account</strong>
+                    <small id="sidebarUserEmail">Loading profile...</small>
+                </div>
+                <span class="profile-menu-arrow">⌄</span>
+            </button>
+        </div>
+    </aside>
+
+    <!-- MAIN CONTENT -->
+    <main class="dashboard-main">
+
+        <header class="dashboard-topbar">
+            <div class="topbar-left">
+                <button type="button" class="mobile-menu-button"
+                    id="sidebarToggle" aria-label="Open navigation"
+                    aria-expanded="false" aria-controls="sidebar">☰</button>
+
+                <div class="breadcrumb">
+                    <span>Workspace</span>
+                    <span>/</span>
+                    <strong>Time Tracker</strong>
+                </div>
+            </div>
+
+            <div class="topbar-actions">
+                <button type="button" class="icon-button"
+                    id="themeToggle" aria-label="Switch theme">◐</button>
+
+                <button type="button" class="icon-button"
+                    id="notificationsButton" aria-label="Notifications">♧</button>
+
+                <div class="topbar-profile">
+                    <button type="button" class="topbar-avatar"
+                        id="profileMenuToggle" aria-label="Open account menu"
+                        aria-expanded="false">
+                        <span id="topbarAvatar">?</span>
+                    </button>
+
+                    <div class="account-dropdown" id="accountDropdown" hidden>
+                        <div class="dropdown-user">
+                            <strong id="dropdownName">Your account</strong>
+                            <small id="dropdownEmail">Loading...</small>
+                        </div>
+                        <a href="settings.html">Account settings</a>
+                        <button type="button" id="signOutButton">Sign out</button>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <div class="dashboard-content">
+
+            <!-- INTRO -->
+            <section class="page-heading-row">
+                <div>
+                    <p class="welcome-eyebrow">UNDERSTAND YOUR TIME</p>
+                    <h1>Time Tracker</h1>
+                    <p>Track your activities and see where your time goes.</p>
+                </div>
+
+                <button type="button" class="btn btn-primary"
+                    id="openManualEntry">
+                    + Add manually
+                </button>
+            </section>
+
+            <!-- SUMMARY -->
+            <section class="schedule-summary-grid">
+
+                <article class="summary-card">
+                    <span class="summary-card-label">TODAY'S TRACKED TIME</span>
+                    <strong id="todayTrackedTime">—</strong>
+                    <small>Total time recorded today</small>
+                </article>
+
+                <article class="summary-card">
+                    <span class="summary-card-label">THIS WEEK</span>
+                    <strong id="weeklyTrackedTime">—</strong>
+                    <small>Time recorded this week</small>
+                </article>
+
+                <article class="summary-card">
+                    <span class="summary-card-label">SESSIONS TODAY</span>
+                    <strong id="todaySessionCount">—</strong>
+                    <small>Completed tracking sessions</small>
+                </article>
+
+                <article class="summary-card">
+                    <span class="summary-card-label">MOST TRACKED</span>
+                    <strong id="mostTrackedCategory">—</strong>
+                    <small>Your leading category today</small>
+                </article>
+
+            </section>
+
+            <!-- TIMER -->
+            <section class="dashboard-panel timer-panel">
+
+                <div class="panel-header">
+                    <div>
+                        <h2>Focus session</h2>
+                        <p>Choose an activity and start tracking.</p>
+                    </div>
+
+                    <span class="timer-status" id="timerStatus">
+                        Not started
+                    </span>
+                </div>
+
+                <form id="timerForm">
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="timerActivity">What are you doing?</label>
+                            <input type="text" id="timerActivity"
+                                placeholder="For example, Mathematics revision"
+                                maxlength="100" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="timerCategory">Category</label>
+                            <select id="timerCategory" required>
+                                <option value="">Choose category</option>
+                                <option value="Studying">Studying</option>
+                                <option value="Homework">Homework</option>
+                                <option value="Tuition">Tuition</option>
+                                <option value="Hobbies">Hobbies</option>
+                                <option value="Sports">Sports</option>
+                                <option value="Exercise">Exercise</option>
+                                <option value="Entertainment">Entertainment</option>
+                                <option value="Family">Family</option>
+                                <option value="Personal Time">Personal Time</option>
+                                <option value="Sleep">Sleep</option>
+                                <option value="Other">Other</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="timer-display" id="timerDisplay"
+                        role="timer" aria-live="off">
+                        00:00:00
+                    </div>
+
+                    <p class="timer-caption" id="timerCaption">
+                        Your timer will appear here.
+                    </p>
+
+                    <div class="timer-controls">
+                        <button type="submit" class="btn btn-primary"
+                            id="startTimerButton">
+                            Start timer
+                        </button>
+
+                        <button type="button" class="btn btn-secondary"
+                            id="pauseTimerButton" disabled>
+                            Pause
+                        </button>
+
+                        <button type="button" class="btn btn-secondary"
+                            id="resumeTimerButton" disabled>
+                            Resume
+                        </button>
+
+                        <button type="button" class="btn btn-secondary"
+                            id="stopTimerButton" disabled>
+                            Stop & save
+                        </button>
+                    </div>
+
+                </form>
+
+                <div class="timer-message" id="timerMessage"
+                    role="status" aria-live="polite" hidden></div>
+
+            </section>
+
+            <!-- TRACKING HISTORY -->
+            <section class="dashboard-panel tracker-history-panel">
+
+                <div class="panel-header">
+                    <div>
+                        <h2>Activity history</h2>
+                        <p>Review your recorded sessions.</p>
+                    </div>
+
+                    <button type="button" class="btn btn-secondary"
+                        id="openHistoryEntry">
+                        + Add entry
+                    </button>
+                </div>
+
+                <div class="tracker-filters">
+                    <div class="form-group">
+                        <label for="historyPeriod">Time period</label>
+                        <select id="historyPeriod">
+                            <option value="today">Today</option>
+                            <option value="week">This week</option>
+                            <option value="month">This month</option>
+                            <option value="all">All time</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="historyCategory">Category</label>
+                        <select id="historyCategory">
+                            <option value="all">All categories</option>
+                            <option value="Studying">Studying</option>
+                            <option value="Homework">Homework</option>
+                            <option value="Tuition">Tuition</option>
+                            <option value="Hobbies">Hobbies</option>
+                            <option value="Sports">Sports</option>
+                            <option value="Exercise">Exercise</option>
+                            <option value="Entertainment">Entertainment</option>
+                            <option value="Family">Family</option>
+                            <option value="Personal Time">Personal Time</option>
+                            <option value="Sleep">Sleep</option>
+                            <option value="Other">Other</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="table-responsive">
+                    <table class="activity-table">
+                        <thead>
+                            <tr>
+                                <th>Activity</th>
+                                <th>Category</th>
+                                <th>Date</th>
+                                <th>Duration</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+
+                        <tbody id="activityHistoryBody">
+                            <tr id="historyEmptyState">
+                                <td colspan="5">
+                                    <div class="empty-state">
+                                        <div class="empty-state-icon">◷</div>
+                                        <h3>No tracked activities yet.</h3>
+                                        <p>
+                                            Start a timer or add an activity
+                                            manually to build your history.
+                                        </p>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+            </section>
+
+            <!-- FOOTER -->
+            <footer class="dashboard-footer">
+                <p>balanceyourtime. — Make time for what matters.</p>
+                <a href="settings.html">Settings</a>
+            </footer>
+
+        </div>
+    </main>
+</div>
+
+
+<!-- MANUAL ENTRY DIALOG -->
+<dialog class="quick-add-dialog" id="manualEntryDialog">
+
+    <div class="dialog-header">
+        <div>
+            <p class="auth-eyebrow">TIME TRACKER</p>
+            <h2 id="manualDialogTitle">Add activity manually</h2>
+        </div>
+
+        <button type="button" class="dialog-close"
+            id="closeManualEntry" aria-label="Close dialog">×</button>
+    </div>
+
+    <form id="manualEntryForm">
+
+        <input type="hidden" id="manualEntryId">
+
+        <div class="form-group">
+            <label for="manualActivityName">Activity name</label>
+            <input type="text" id="manualActivityName"
+                placeholder="What did you work on?" maxlength="100" required>
+        </div>
+
+        <div class="form-group">
+            <label for="manualCategory">Category</label>
+            <select id="manualCategory" required>
+                <option value="">Choose category</option>
+                <option value="Studying">Studying</option>
+                <option value="Homework">Homework</option>
+                <option value="Tuition">Tuition</option>
+                <option value="Hobbies">Hobbies</option>
+                <option value="Sports">Sports</option>
+                <option value="Exercise">Exercise</option>
+                <option value="Entertainment">Entertainment</option>
+                <option value="Family">Family</option>
+                <option value="Personal Time">Personal Time</option>
+                <option value="Sleep">Sleep</option>
+                <option value="Other">Other</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label for="manualDate">Date</label>
+            <input type="date" id="manualDate" required>
+        </div>
+
+        <div class="form-row">
+            <div class="form-group">
+                <label for="manualStartTime">Start time</label>
+                <input type="time" id="manualStartTime" required>
+            </div>
+
+            <div class="form-group">
+                <label for="manualEndTime">End time</label>
+                <input type="time" id="manualEndTime" required>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="manualDescription">
+                Description <span class="optional-label">Optional</span>
+            </label>
+            <textarea id="manualDescription" rows="3"
+                maxlength="500" placeholder="Add some details..."></textarea>
+        </div>
+
+        <div class="auth-message" id="manualEntryMessage"
+            role="alert" aria-live="polite" hidden></div>
+
+        <div class="dialog-actions">
+            <button type="button" class="btn btn-secondary"
+                id="cancelManualEntry">Cancel</button>
+
+            <button type="submit" class="btn btn-primary"
+                id="saveManualEntry">Save entry</button>
+        </div>
+
+    </form>
+</dialog>
+
+</body>
+</html>
