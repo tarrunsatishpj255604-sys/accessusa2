@@ -1,0 +1,393 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Progress Reports | balanceyourtime.</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="style.css">
+    <script type="module" src="reports.js"></script>
+</head>
+
+<body class="dashboard-page">
+
+<div class="dashboard-layout">
+
+    <!-- SIDEBAR -->
+    <aside class="sidebar" id="sidebar">
+
+        <a href="dashboard.html" class="logo sidebar-logo">
+            balanceyourtime<span>.</span>
+        </a>
+
+        <div class="sidebar-section">
+            <p class="sidebar-label">WORKSPACE</p>
+
+            <nav class="sidebar-nav" aria-label="Main navigation">
+                <a href="dashboard.html" class="sidebar-link">
+                    <span class="nav-icon">⌂</span><span>Overview</span>
+                </a>
+                <a href="schedule.html" class="sidebar-link">
+                    <span class="nav-icon">▦</span><span>My Schedule</span>
+                </a>
+                <a href="tracker.html" class="sidebar-link">
+                    <span class="nav-icon">◷</span><span>Time Tracker</span>
+                </a>
+                <a href="hobbies.html" class="sidebar-link">
+                    <span class="nav-icon">♡</span><span>My Hobbies</span>
+                </a>
+                <a href="study.html" class="sidebar-link">
+                    <span class="nav-icon">▤</span><span>Study Planner</span>
+                </a>
+                <a href="reports.html" class="sidebar-link active" aria-current="page">
+                    <span class="nav-icon">▥</span><span>Progress Reports</span>
+                </a>
+                <a href="settings.html" class="sidebar-link">
+                    <span class="nav-icon">⚙</span><span>Settings</span>
+                </a>
+            </nav>
+        </div>
+
+        <div class="sidebar-bottom">
+            <div class="sidebar-tip">
+                <span class="tip-icon">✦</span>
+                <h3>Progress, not perfection.</h3>
+                <p>Use your reports to understand your routine and make adjustments.</p>
+            </div>
+
+            <button type="button" class="sidebar-profile" id="sidebarProfile">
+                <div class="profile-avatar" id="sidebarAvatar">?</div>
+                <div class="profile-details">
+                    <strong id="sidebarUserName">Your account</strong>
+                    <small id="sidebarUserEmail">Loading profile...</small>
+                </div>
+                <span class="profile-menu-arrow">⌄</span>
+            </button>
+        </div>
+
+    </aside>
+
+
+    <!-- MAIN -->
+    <main class="dashboard-main">
+
+        <!-- TOPBAR -->
+        <header class="dashboard-topbar">
+
+            <div class="topbar-left">
+                <button type="button" class="mobile-menu-button"
+                    id="sidebarToggle" aria-label="Open navigation"
+                    aria-expanded="false" aria-controls="sidebar">☰</button>
+
+                <div class="breadcrumb">
+                    <span>Workspace</span>
+                    <span>/</span>
+                    <strong>Progress Reports</strong>
+                </div>
+            </div>
+
+            <div class="topbar-actions">
+                <button type="button" class="icon-button"
+                    id="themeToggle" aria-label="Switch theme">◐</button>
+
+                <button type="button" class="icon-button"
+                    id="notificationsButton" aria-label="Notifications">♧</button>
+
+                <div class="topbar-profile">
+                    <button type="button" class="topbar-avatar"
+                        id="profileMenuToggle" aria-label="Open account menu"
+                        aria-expanded="false">
+                        <span id="topbarAvatar">?</span>
+                    </button>
+
+                    <div class="account-dropdown" id="accountDropdown" hidden>
+                        <div class="dropdown-user">
+                            <strong id="dropdownName">Your account</strong>
+                            <small id="dropdownEmail">Loading...</small>
+                        </div>
+                        <a href="settings.html">Account settings</a>
+                        <button type="button" id="signOutButton">Sign out</button>
+                    </div>
+                </div>
+            </div>
+
+        </header>
+
+
+        <div class="dashboard-content">
+
+            <!-- INTRO -->
+            <section class="page-heading-row">
+                <div>
+                    <p class="welcome-eyebrow">YOUR JOURNEY SO FAR</p>
+                    <h1>Progress Reports</h1>
+                    <p>Understand your habits, recognise your progress and find room to improve.</p>
+                </div>
+
+                <div class="report-period-control">
+                    <label for="reportPeriod">Report period</label>
+                    <select id="reportPeriod">
+                        <option value="daily">Today</option>
+                        <option value="weekly" selected>This week</option>
+                        <option value="monthly">This month</option>
+                    </select>
+                </div>
+            </section>
+
+
+            <!-- SUMMARY -->
+            <section class="schedule-summary-grid">
+
+                <article class="summary-card">
+                    <span class="summary-card-label">TOTAL TRACKED TIME</span>
+                    <strong id="totalTrackedTime">—</strong>
+                    <small>For the selected period</small>
+                </article>
+
+                <article class="summary-card">
+                    <span class="summary-card-label">STUDY TIME</span>
+                    <strong id="reportStudyTime">—</strong>
+                    <small>Studying and homework</small>
+                </article>
+
+                <article class="summary-card">
+                    <span class="summary-card-label">HOBBY TIME</span>
+                    <strong id="reportHobbyTime">—</strong>
+                    <small>Time spent on interests</small>
+                </article>
+
+                <article class="summary-card">
+                    <span class="summary-card-label">ACTIVITIES COMPLETED</span>
+                    <strong id="reportCompletedActivities">—</strong>
+                    <small>For the selected period</small>
+                </article>
+
+            </section>
+
+
+            <!-- TIME DISTRIBUTION -->
+            <section class="dashboard-panel">
+
+                <div class="panel-header">
+                    <div>
+                        <h2>Time distribution</h2>
+                        <p>See how your tracked time is divided between categories.</p>
+                    </div>
+                </div>
+
+                <div class="report-chart-container"
+                    id="timeDistributionChart"
+                    aria-label="Time distribution chart">
+
+                    <div class="chart-empty-state" id="timeDistributionEmpty">
+                        <div class="empty-state-icon">◴</div>
+                        <h3>No time data yet</h3>
+                        <p>Track some activities to see your time distribution.</p>
+                        <a href="tracker.html" class="text-link">Open time tracker →</a>
+                    </div>
+
+                </div>
+
+                <div class="report-legend" id="timeDistributionLegend"></div>
+
+            </section>
+
+
+            <!-- STUDY VS HOBBIES -->
+            <section class="dashboard-two-column">
+
+                <article class="dashboard-panel">
+
+                    <div class="panel-header">
+                        <div>
+                            <h2>Study vs hobbies</h2>
+                            <p>Compare academic and interest-based time.</p>
+                        </div>
+                    </div>
+
+                    <div class="report-chart-container"
+                        id="studyHobbyChart"
+                        aria-label="Study and hobby time comparison">
+
+                        <div class="chart-empty-state" id="studyHobbyEmpty">
+                            <div class="empty-state-icon">◇</div>
+                            <p>Start tracking study and hobby sessions to see this comparison.</p>
+                        </div>
+
+                    </div>
+
+                </article>
+
+
+                <!-- SCHEDULE COMPLETION -->
+                <article class="dashboard-panel">
+
+                    <div class="panel-header">
+                        <div>
+                            <h2>Scheduled vs completed</h2>
+                            <p>Review the activities you planned and completed.</p>
+                        </div>
+                    </div>
+
+                    <div class="schedule-report-content">
+
+                        <div class="report-progress-item">
+                            <div class="report-progress-heading">
+                                <span>Completed</span>
+                                <strong id="reportCompletedCount">—</strong>
+                            </div>
+                            <div class="progress-track">
+                                <div class="progress-fill" id="reportCompletedBar"></div>
+                            </div>
+                        </div>
+
+                        <div class="report-progress-item">
+                            <div class="report-progress-heading">
+                                <span>Still remaining</span>
+                                <strong id="reportRemainingCount">—</strong>
+                            </div>
+                            <div class="progress-track">
+                                <div class="progress-fill" id="reportRemainingBar"></div>
+                            </div>
+                        </div>
+
+                        <div class="report-progress-note" id="scheduleReportNote">
+                            Your schedule completion report will appear when you add activities.
+                        </div>
+
+                    </div>
+
+                </article>
+
+            </section>
+
+
+            <!-- DAILY AND WEEKLY TRENDS -->
+            <section class="dashboard-panel">
+
+                <div class="panel-header">
+                    <div>
+                        <h2>Time trends</h2>
+                        <p>Explore how your tracked time changes across the selected period.</p>
+                    </div>
+                </div>
+
+                <div class="report-chart-container"
+                    id="timeTrendChart"
+                    aria-label="Time trends chart">
+
+                    <div class="chart-empty-state" id="timeTrendEmpty">
+                        <div class="empty-state-icon">▥</div>
+                        <p>Your time trends will appear after you record activities.</p>
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- HOBBY GOALS -->
+            <section class="dashboard-panel">
+
+                <div class="panel-header">
+                    <div>
+                        <h2>Hobby goal progress</h2>
+                        <p>See how much time you've made for the activities you enjoy.</p>
+                    </div>
+
+                    <a href="hobbies.html" class="panel-link">Open hobbies →</a>
+                </div>
+
+                <div class="hobby-report-list" id="hobbyReportList">
+
+                    <div class="empty-state" id="hobbyReportEmpty">
+                        <div class="empty-state-icon">♡</div>
+                        <h3>No hobby goals to report yet.</h3>
+                        <p>Add hobbies and weekly goals to start tracking your progress.</p>
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- SUBJECT PROGRESS -->
+            <section class="dashboard-panel">
+
+                <div class="panel-header">
+                    <div>
+                        <h2>Learning progress</h2>
+                        <p>Review your understanding across different subjects.</p>
+                    </div>
+
+                    <a href="study.html" class="panel-link">Open study planner →</a>
+                </div>
+
+                <div class="table-responsive">
+                    <table class="activity-table">
+
+                        <thead>
+                            <tr>
+                                <th>Subject</th>
+                                <th>Topics completed</th>
+                                <th>Need practice</th>
+                                <th>Fully understood</th>
+                            </tr>
+                        </thead>
+
+                        <tbody id="subjectReportBody">
+                            <tr id="subjectReportEmpty">
+                                <td colspan="4">
+                                    <div class="empty-state">
+                                        <p>Your subject progress will appear after you add subjects and complete understanding checks.</p>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+
+                    </table>
+                </div>
+
+            </section>
+
+
+            <!-- CONSTRUCTIVE INSIGHTS -->
+            <section class="dashboard-panel">
+
+                <div class="panel-header">
+                    <div>
+                        <h2>Your insights</h2>
+                        <p>Helpful observations based on your recorded activity.</p>
+                    </div>
+                </div>
+
+                <div class="report-insights" id="reportInsights">
+
+                    <div class="empty-state" id="insightsEmpty">
+                        <div class="empty-state-icon">✦</div>
+                        <h3>Your insights will grow with your data.</h3>
+                        <p>Record activities and review your reports to discover patterns in your routine.</p>
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- FOOTER -->
+            <footer class="dashboard-footer">
+                <p>balanceyourtime. — Make time for what matters.</p>
+                <a href="settings.html">Settings</a>
+            </footer>
+
+        </div>
+    </main>
+</div>
+
+</body>
+</html>
