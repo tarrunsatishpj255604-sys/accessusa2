@@ -1,0 +1,968 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Dashboard | balanceyourtime.</title>
+
+    <meta
+        name="description"
+        content="Your personal balanceyourtime. dashboard. Organise your schedule, track your time and protect your hobbies."
+    >
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet"
+    >
+
+    <link rel="stylesheet" href="style.css">
+
+    <script type="module" src="dashboard.js"></script>
+</head>
+
+
+<body class="dashboard-page">
+
+    <div class="dashboard-layout">
+
+        <!-- SIDEBAR -->
+
+        <aside class="sidebar" id="sidebar">
+
+            <a href="dashboard.html" class="logo sidebar-logo">
+                balanceyourtime<span>.</span>
+            </a>
+
+
+            <div class="sidebar-section">
+
+                <p class="sidebar-label">WORKSPACE</p>
+
+                <nav class="sidebar-nav" aria-label="Main navigation">
+
+                    <a
+                        href="dashboard.html"
+                        class="sidebar-link active"
+                        aria-current="page">
+
+                        <span class="nav-icon" aria-hidden="true">⌂</span>
+                        <span>Overview</span>
+
+                    </a>
+
+
+                    <a href="schedule.html" class="sidebar-link">
+
+                        <span class="nav-icon" aria-hidden="true">▦</span>
+                        <span>My Schedule</span>
+
+                    </a>
+
+
+                    <a href="tracker.html" class="sidebar-link">
+
+                        <span class="nav-icon" aria-hidden="true">◷</span>
+                        <span>Time Tracker</span>
+
+                    </a>
+
+
+                    <a href="hobbies.html" class="sidebar-link">
+
+                        <span class="nav-icon" aria-hidden="true">♡</span>
+                        <span>My Hobbies</span>
+
+                    </a>
+
+
+                    <a href="study.html" class="sidebar-link">
+
+                        <span class="nav-icon" aria-hidden="true">▤</span>
+                        <span>Study Planner</span>
+
+                    </a>
+
+
+                    <a href="reports.html" class="sidebar-link">
+
+                        <span class="nav-icon" aria-hidden="true">▥</span>
+                        <span>Progress Reports</span>
+
+                    </a>
+
+
+                    <a href="settings.html" class="sidebar-link">
+
+                        <span class="nav-icon" aria-hidden="true">⚙</span>
+                        <span>Settings</span>
+
+                    </a>
+
+                </nav>
+
+            </div>
+
+
+            <!-- SIDEBAR BOTTOM -->
+
+            <div class="sidebar-bottom">
+
+                <div class="sidebar-tip">
+
+                    <span class="tip-icon" aria-hidden="true">✦</span>
+
+                    <h3>Remember your balance.</h3>
+
+                    <p>
+                        Your hobbies and personal time matter too.
+                    </p>
+
+                </div>
+
+
+                <button
+                    type="button"
+                    class="sidebar-profile"
+                    id="sidebarProfile">
+
+                    <div class="profile-avatar" id="sidebarAvatar">
+                        <span>?</span>
+                    </div>
+
+                    <div class="profile-details">
+                        <strong id="sidebarUserName">Your account</strong>
+                        <small id="sidebarUserEmail">Loading profile...</small>
+                    </div>
+
+                    <span class="profile-menu-arrow" aria-hidden="true">⌄</span>
+
+                </button>
+
+            </div>
+
+        </aside>
+
+
+        <!-- MAIN CONTENT -->
+
+        <main class="dashboard-main">
+
+
+            <!-- TOPBAR -->
+
+            <header class="dashboard-topbar">
+
+                <div class="topbar-left">
+
+                    <button
+                        type="button"
+                        class="mobile-menu-button"
+                        id="sidebarToggle"
+                        aria-label="Open navigation"
+                        aria-expanded="false"
+                        aria-controls="sidebar">
+
+                        ☰
+
+                    </button>
+
+                    <div class="breadcrumb">
+                        <span>Workspace</span>
+                        <span aria-hidden="true">/</span>
+                        <strong>Overview</strong>
+                    </div>
+
+                </div>
+
+
+                <div class="topbar-actions">
+
+                    <button
+                        type="button"
+                        class="icon-button"
+                        id="themeToggle"
+                        aria-label="Switch theme"
+                        title="Switch theme">
+
+                        ◐
+
+                    </button>
+
+
+                    <button
+                        type="button"
+                        class="icon-button notification-button"
+                        id="notificationsButton"
+                        aria-label="Notifications">
+
+                        ♧
+
+                        <span
+                            class="notification-indicator"
+                            id="notificationIndicator"
+                            hidden>
+                        </span>
+
+                    </button>
+
+
+                    <div class="topbar-profile">
+
+                        <button
+                            type="button"
+                            class="topbar-avatar"
+                            id="profileMenuToggle"
+                            aria-label="Open account menu"
+                            aria-expanded="false">
+
+                            <span id="topbarAvatar">?</span>
+
+                        </button>
+
+
+                        <div
+                            class="account-dropdown"
+                            id="accountDropdown"
+                            hidden>
+
+                            <div class="dropdown-user">
+                                <strong id="dropdownName">Your account</strong>
+                                <small id="dropdownEmail">Loading...</small>
+                            </div>
+
+                            <a href="settings.html">Account settings</a>
+
+                            <button
+                                type="button"
+                                id="signOutButton">
+
+                                Sign out
+
+                            </button>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </header>
+
+
+            <!-- DASHBOARD CONTENT -->
+
+            <div class="dashboard-content">
+
+
+                <!-- WELCOME -->
+
+                <section class="welcome-section">
+
+                    <div>
+
+                        <p class="welcome-eyebrow">
+                            YOUR PERSONAL WORKSPACE
+                        </p>
+
+                        <h1>
+                            <span id="greetingText">Welcome back</span>,
+                            <span id="welcomeName">there</span>.
+                        </h1>
+
+                        <p id="welcomeMessage">
+                            Make today a little more balanced.
+                        </p>
+
+                    </div>
+
+
+                    <div class="welcome-date">
+
+                        <span class="date-icon" aria-hidden="true">▦</span>
+
+                        <div>
+                            <strong id="currentDate">Loading date...</strong>
+                            <small>Today's overview</small>
+                        </div>
+
+                    </div>
+
+                </section>
+
+
+                <!-- TIME SUMMARY -->
+
+                <section class="overview-section">
+
+                    <div class="section-title-row">
+
+                        <div>
+                            <h2>Your time overview</h2>
+                            <p>See how your time is being spent today.</p>
+                        </div>
+
+                        <a href="tracker.html" class="text-link">
+                            Open time tracker →
+                        </a>
+
+                    </div>
+
+
+                    <div class="overview-grid">
+
+
+                        <article class="overview-card study-card">
+
+                            <div class="overview-card-top">
+                                <span class="overview-icon">▤</span>
+                                <span class="overview-category">STUDY</span>
+                            </div>
+
+                            <h3>Study Time</h3>
+
+                            <p class="overview-value" data-stat="study">
+                                —
+                            </p>
+
+                            <p class="overview-description">
+                                Time spent studying
+                            </p>
+
+                        </article>
+
+
+                        <article class="overview-card homework-card">
+
+                            <div class="overview-card-top">
+                                <span class="overview-icon">✎</span>
+                                <span class="overview-category">HOMEWORK</span>
+                            </div>
+
+                            <h3>Homework Time</h3>
+
+                            <p class="overview-value" data-stat="homework">
+                                —
+                            </p>
+
+                            <p class="overview-description">
+                                Time spent on assignments
+                            </p>
+
+                        </article>
+
+
+                        <article class="overview-card hobby-card">
+
+                            <div class="overview-card-top">
+                                <span class="overview-icon">♡</span>
+                                <span class="overview-category">HOBBIES</span>
+                            </div>
+
+                            <h3>Hobby Time</h3>
+
+                            <p class="overview-value" data-stat="hobbies">
+                                —
+                            </p>
+
+                            <p class="overview-description">
+                                Time for what you enjoy
+                            </p>
+
+                        </article>
+
+
+                        <article class="overview-card sports-card">
+
+                            <div class="overview-card-top">
+                                <span class="overview-icon">◇</span>
+                                <span class="overview-category">ACTIVITY</span>
+                            </div>
+
+                            <h3>Sports & Exercise</h3>
+
+                            <p class="overview-value" data-stat="sports">
+                                —
+                            </p>
+
+                            <p class="overview-description">
+                                Physical activity time
+                            </p>
+
+                        </article>
+
+
+                        <article class="overview-card personal-card">
+
+                            <div class="overview-card-top">
+                                <span class="overview-icon">○</span>
+                                <span class="overview-category">PERSONAL</span>
+                            </div>
+
+                            <h3>Personal Time</h3>
+
+                            <p class="overview-value" data-stat="personal">
+                                —
+                            </p>
+
+                            <p class="overview-description">
+                                Time for yourself
+                            </p>
+
+                        </article>
+
+
+                        <article class="overview-card sleep-card">
+
+                            <div class="overview-card-top">
+                                <span class="overview-icon">☾</span>
+                                <span class="overview-category">REST</span>
+                            </div>
+
+                            <h3>Sleep</h3>
+
+                            <p class="overview-value" data-stat="sleep">
+                                —
+                            </p>
+
+                            <p class="overview-description">
+                                Time spent resting
+                            </p>
+
+                        </article>
+
+
+                    </div>
+
+                </section>
+
+
+                <!-- TODAY'S SCHEDULE + DAILY PROGRESS -->
+
+                <section class="dashboard-two-column">
+
+
+                    <!-- TODAY'S SCHEDULE -->
+
+                    <article class="dashboard-panel schedule-panel">
+
+                        <div class="panel-header">
+
+                            <div>
+                                <h2>Today's schedule</h2>
+                                <p>Your planned activities.</p>
+                            </div>
+
+                            <a href="schedule.html" class="panel-link">
+                                View all →
+                            </a>
+
+                        </div>
+
+
+                        <div
+                            class="schedule-list"
+                            id="todaySchedule">
+
+                            <div class="empty-state" id="scheduleEmptyState">
+
+                                <div class="empty-state-icon">▦</div>
+
+                                <h3>Your day is open.</h3>
+
+                                <p>
+                                    Add your first activity to start
+                                    organising your schedule.
+                                </p>
+
+                                <a href="schedule.html" class="btn btn-secondary">
+                                    Plan your day
+                                </a>
+
+                            </div>
+
+                        </div>
+
+                    </article>
+
+
+                    <!-- DAILY PROGRESS -->
+
+                    <article class="dashboard-panel progress-panel">
+
+                        <div class="panel-header">
+
+                            <div>
+                                <h2>Daily progress</h2>
+                                <p>How your planned day is going.</p>
+                            </div>
+
+                        </div>
+
+
+                        <div class="daily-progress-content">
+
+                            <div
+                                class="progress-circle"
+                                id="dailyProgressCircle"
+                                role="img"
+                                aria-label="Daily progress will appear when activities are added">
+
+                                <div class="progress-circle-inner">
+
+                                    <strong id="dailyProgressValue">—</strong>
+
+                                    <span>completed</span>
+
+                                </div>
+
+                            </div>
+
+
+                            <div class="progress-summary">
+
+                                <div class="progress-summary-row">
+                                    <span class="progress-dot completed-dot"></span>
+                                    <span>Completed</span>
+                                    <strong id="completedCount">—</strong>
+                                </div>
+
+                                <div class="progress-summary-row">
+                                    <span class="progress-dot pending-dot"></span>
+                                    <span>Remaining</span>
+                                    <strong id="remainingCount">—</strong>
+                                </div>
+
+                                <div class="progress-summary-row">
+                                    <span class="progress-dot total-dot"></span>
+                                    <span>Total planned</span>
+                                    <strong id="totalActivities">—</strong>
+                                </div>
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="progress-note" id="dailyProgressNote">
+                            Your progress will appear here once you add activities.
+                        </div>
+
+                    </article>
+
+                </section>
+
+
+                <!-- WEEKLY BALANCE + TIME DISTRIBUTION -->
+
+                <section class="dashboard-two-column">
+
+
+                    <!-- WEEKLY BALANCE -->
+
+                    <article class="dashboard-panel weekly-panel">
+
+                        <div class="panel-header">
+
+                            <div>
+                                <h2>Your weekly balance</h2>
+                                <p>A look at your activity throughout the week.</p>
+                            </div>
+
+                            <a href="reports.html" class="panel-link">
+                                Full report →
+                            </a>
+
+                        </div>
+
+
+                        <div
+                            class="weekly-chart"
+                            id="weeklyBalanceChart"
+                            aria-label="Weekly time balance chart">
+
+                            <div class="chart-empty-state" id="weeklyChartEmpty">
+
+                                <div class="empty-state-icon">▥</div>
+
+                                <p>
+                                    Your weekly overview will appear
+                                    after you start tracking activities.
+                                </p>
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="weekly-legend">
+
+                            <span>
+                                <i class="legend-dot study-legend"></i>
+                                Study
+                            </span>
+
+                            <span>
+                                <i class="legend-dot hobby-legend"></i>
+                                Hobbies
+                            </span>
+
+                            <span>
+                                <i class="legend-dot personal-legend"></i>
+                                Personal
+                            </span>
+
+                        </div>
+
+                    </article>
+
+
+                    <!-- TIME DISTRIBUTION -->
+
+                    <article class="dashboard-panel distribution-panel">
+
+                        <div class="panel-header">
+
+                            <div>
+                                <h2>Time distribution</h2>
+                                <p>Today's tracked time by category.</p>
+                            </div>
+
+                        </div>
+
+
+                        <div
+                            class="distribution-chart"
+                            id="timeDistributionChart"
+                            aria-label="Today's time distribution">
+
+                            <div class="chart-empty-state" id="distributionEmpty">
+
+                                <div class="empty-state-icon">◴</div>
+
+                                <h3>No tracked time yet</h3>
+
+                                <p>
+                                    Start tracking an activity to see
+                                    where your time goes.
+                                </p>
+
+                                <a href="tracker.html" class="text-link">
+                                    Start tracking →
+                                </a>
+
+                            </div>
+
+                        </div>
+
+
+                        <div
+                            class="distribution-legend"
+                            id="distributionLegend">
+                        </div>
+
+                    </article>
+
+                </section>
+
+
+                <!-- UPCOMING ACTIVITIES -->
+
+                <section class="dashboard-panel upcoming-panel">
+
+                    <div class="panel-header">
+
+                        <div>
+                            <h2>Upcoming activities</h2>
+                            <p>What's coming up next?</p>
+                        </div>
+
+                        <a href="schedule.html" class="panel-link">
+                            View schedule →
+                        </a>
+
+                    </div>
+
+
+                    <div
+                        class="upcoming-list"
+                        id="upcomingActivities">
+
+                        <div class="empty-state" id="upcomingEmptyState">
+
+                            <div class="empty-state-icon">◷</div>
+
+                            <h3>Nothing coming up.</h3>
+
+                            <p>
+                                Your upcoming activities will appear here
+                                when you add them to your schedule.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+                </section>
+
+
+                <!-- QUICK ACTIONS -->
+
+                <section class="quick-actions-section">
+
+                    <div class="section-title-row">
+
+                        <div>
+                            <h2>Quick actions</h2>
+                            <p>Get straight to what you need.</p>
+                        </div>
+
+                    </div>
+
+
+                    <div class="quick-actions-grid">
+
+                        <button
+                            type="button"
+                            class="quick-action-card"
+                            id="quickAddButton">
+
+                            <span class="quick-action-icon">＋</span>
+
+                            <strong>Add activity</strong>
+
+                            <small>Plan something new</small>
+
+                        </button>
+
+
+                        <a href="tracker.html" class="quick-action-card">
+
+                            <span class="quick-action-icon">◷</span>
+
+                            <strong>Track time</strong>
+
+                            <small>Start a timer</small>
+
+                        </a>
+
+
+                        <a href="hobbies.html" class="quick-action-card">
+
+                            <span class="quick-action-icon">♡</span>
+
+                            <strong>Protect hobby time</strong>
+
+                            <small>Make room for your interests</small>
+
+                        </a>
+
+
+                        <a href="study.html" class="quick-action-card">
+
+                            <span class="quick-action-icon">▤</span>
+
+                            <strong>Plan your studies</strong>
+
+                            <small>Organise subjects and topics</small>
+
+                        </a>
+
+                    </div>
+
+                </section>
+
+
+                <!-- FOOTER -->
+
+                <footer class="dashboard-footer">
+
+                    <p>
+                        balanceyourtime. — Make time for what matters.
+                    </p>
+
+                    <a href="settings.html">Settings</a>
+
+                </footer>
+
+
+            </div>
+
+        </main>
+
+    </div>
+
+
+    <!-- QUICK ADD ACTIVITY DIALOG -->
+
+    <dialog class="quick-add-dialog" id="quickAddDialog">
+
+        <div class="dialog-header">
+
+            <div>
+                <p class="auth-eyebrow">QUICK ACTION</p>
+                <h2>Add an activity</h2>
+            </div>
+
+            <button
+                type="button"
+                class="dialog-close"
+                id="closeQuickAdd"
+                aria-label="Close dialog">
+
+                ×
+
+            </button>
+
+        </div>
+
+
+        <form id="quickAddForm">
+
+            <div class="form-group">
+
+                <label for="activityTitle">Activity name</label>
+
+                <input
+                    type="text"
+                    id="activityTitle"
+                    name="title"
+                    placeholder="For example, Mathematics revision"
+                    maxlength="100"
+                    required>
+
+            </div>
+
+
+            <div class="form-group">
+
+                <label for="activityCategory">Category</label>
+
+                <select
+                    id="activityCategory"
+                    name="category"
+                    required>
+
+                    <option value="">Choose a category</option>
+
+                    <option value="Studying">Studying</option>
+                    <option value="Homework">Homework</option>
+                    <option value="Tuition">Tuition</option>
+                    <option value="Hobbies">Hobbies</option>
+                    <option value="Sports">Sports</option>
+                    <option value="Exercise">Exercise</option>
+                    <option value="Entertainment">Entertainment</option>
+                    <option value="Family">Family</option>
+                    <option value="Personal Time">Personal Time</option>
+                    <option value="Sleep">Sleep</option>
+                    <option value="Other">Other</option>
+
+                </select>
+
+            </div>
+
+
+            <div class="form-group">
+
+                <label for="activityDate">Date</label>
+
+                <input
+                    type="date"
+                    id="activityDate"
+                    name="date"
+                    required>
+
+            </div>
+
+
+            <div class="form-row">
+
+                <div class="form-group">
+
+                    <label for="activityStart">Start time</label>
+
+                    <input
+                        type="time"
+                        id="activityStart"
+                        name="startTime"
+                        required>
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label for="activityEnd">End time</label>
+
+                    <input
+                        type="time"
+                        id="activityEnd"
+                        name="endTime"
+                        required>
+
+                </div>
+
+            </div>
+
+
+            <div class="form-group">
+
+                <label for="activityDescription">
+                    Description
+                    <span class="optional-label">Optional</span>
+                </label>
+
+                <textarea
+                    id="activityDescription"
+                    name="description"
+                    rows="3"
+                    maxlength="500"
+                    placeholder="Add a few details..."></textarea>
+
+            </div>
+
+
+            <div
+                class="auth-message"
+                id="quickAddMessage"
+                role="alert"
+                aria-live="polite"
+                hidden>
+            </div>
+
+
+            <div class="dialog-actions">
+
+                <button
+                    type="button"
+                    class="btn btn-secondary"
+                    id="cancelQuickAdd">
+
+                    Cancel
+
+                </button>
+
+
+                <button
+                    type="submit"
+                    class="btn btn-primary"
+                    id="saveQuickActivity">
+
+                    Save activity
+
+                </button>
+
+            </div>
+
+        </form>
+
+    </dialog>
+
+
+</body>
+</html>
