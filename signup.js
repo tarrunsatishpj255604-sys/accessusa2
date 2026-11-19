@@ -46,29 +46,23 @@ form.addEventListener("submit", async (event) => {
             options: {
                 data: {
                     full_name: name
-                },
-                emailRedirectTo: new URL(
-                    "signin.html",
-                    window.location.href
-                ).href
+                }
             }
         });
 
         if (error) throw error;
 
-        if (data.session) {
-            showMessage(
-                "Account created successfully!",
-                "success"
-            );
-        } else {
-            showMessage(
-                "Account created! Please check your email to confirm.",
-                "success"
+        if (!data.session) {
+            throw new Error(
+                "Account created, but no session was returned. Check your Supabase email confirmation settings."
             );
         }
 
-        form.reset();
+        showMessage("Account created! Redirecting...", "success");
+
+        setTimeout(() => {
+            window.location.href = "dashboard.html";
+        }, 1000);
 
     } catch (error) {
         showMessage(error.message);
