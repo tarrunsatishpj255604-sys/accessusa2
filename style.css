@@ -2545,3 +2545,56 @@ body {
         box-shadow: none;
     }
 }
+
+/* SIGN IN — SLIGHT SIZE ADJUSTMENTS */
+
+.auth-card {
+    width: min(100% - 32px, 470px);
+    padding: 44px 42px;
+}
+
+.auth-heading h1 {
+    font-size: 2rem;
+}
+
+.auth-heading > p:last-child {
+    font-size: 15px;
+    line-height: 1.7;
+}
+
+.auth-eyebrow {
+    font-size: 12px;
+}
+
+.google-button,
+.auth-submit {
+    min-height: 50px;
+    font-size: 15px;
+}
+
+.form-group input {
+    min-height: 49px;
+    font-size: 15px;
+}
+
+.form-group label {
+    font-size: 14px;
+}
+
+.auth-switch {
+    font-size: 14px;
+}
+
+.auth-legal {
+    font-size: 12px;
+}
+
+@media (max-width: 480px) {
+    .auth-card {
+        padding: 34px 24px;
+    }
+
+    .auth-heading h1 {
+        font-size: 1.75rem;
+    }
+}
