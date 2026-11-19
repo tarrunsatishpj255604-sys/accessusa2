@@ -1,0 +1,893 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>My Schedule | balanceyourtime.</title>
+
+    <meta
+        name="description"
+        content="Plan your day and organise your weekly schedule with balanceyourtime."
+    >
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet"
+    >
+
+    <link rel="stylesheet" href="style.css">
+
+    <script type="module" src="schedule.js"></script>
+</head>
+
+
+<body class="dashboard-page">
+
+    <div class="dashboard-layout">
+
+        <!-- SIDEBAR -->
+
+        <aside class="sidebar" id="sidebar">
+
+            <a href="dashboard.html" class="logo sidebar-logo">
+                balanceyourtime<span>.</span>
+            </a>
+
+
+            <div class="sidebar-section">
+
+                <p class="sidebar-label">WORKSPACE</p>
+
+                <nav class="sidebar-nav" aria-label="Main navigation">
+
+                    <a href="dashboard.html" class="sidebar-link">
+                        <span class="nav-icon" aria-hidden="true">⌂</span>
+                        <span>Overview</span>
+                    </a>
+
+                    <a
+                        href="schedule.html"
+                        class="sidebar-link active"
+                        aria-current="page">
+
+                        <span class="nav-icon" aria-hidden="true">▦</span>
+                        <span>My Schedule</span>
+                    </a>
+
+                    <a href="tracker.html" class="sidebar-link">
+                        <span class="nav-icon" aria-hidden="true">◷</span>
+                        <span>Time Tracker</span>
+                    </a>
+
+                    <a href="hobbies.html" class="sidebar-link">
+                        <span class="nav-icon" aria-hidden="true">♡</span>
+                        <span>My Hobbies</span>
+                    </a>
+
+                    <a href="study.html" class="sidebar-link">
+                        <span class="nav-icon" aria-hidden="true">▤</span>
+                        <span>Study Planner</span>
+                    </a>
+
+                    <a href="reports.html" class="sidebar-link">
+                        <span class="nav-icon" aria-hidden="true">▥</span>
+                        <span>Progress Reports</span>
+                    </a>
+
+                    <a href="settings.html" class="sidebar-link">
+                        <span class="nav-icon" aria-hidden="true">⚙</span>
+                        <span>Settings</span>
+                    </a>
+
+                </nav>
+
+            </div>
+
+
+            <div class="sidebar-bottom">
+
+                <div class="sidebar-tip">
+                    <span class="tip-icon" aria-hidden="true">✦</span>
+
+                    <h3>Make room for what matters.</h3>
+
+                    <p>
+                        A good schedule includes work, rest and the things you enjoy.
+                    </p>
+                </div>
+
+
+                <button
+                    type="button"
+                    class="sidebar-profile"
+                    id="sidebarProfile">
+
+                    <div class="profile-avatar" id="sidebarAvatar">
+                        <span>?</span>
+                    </div>
+
+                    <div class="profile-details">
+                        <strong id="sidebarUserName">Your account</strong>
+                        <small id="sidebarUserEmail">Loading profile...</small>
+                    </div>
+
+                    <span class="profile-menu-arrow" aria-hidden="true">⌄</span>
+
+                </button>
+
+            </div>
+
+        </aside>
+
+
+        <!-- MAIN CONTENT -->
+
+        <main class="dashboard-main">
+
+
+            <!-- TOPBAR -->
+
+            <header class="dashboard-topbar">
+
+                <div class="topbar-left">
+
+                    <button
+                        type="button"
+                        class="mobile-menu-button"
+                        id="sidebarToggle"
+                        aria-label="Open navigation"
+                        aria-expanded="false"
+                        aria-controls="sidebar">
+
+                        ☰
+
+                    </button>
+
+                    <div class="breadcrumb">
+                        <span>Workspace</span>
+                        <span aria-hidden="true">/</span>
+                        <strong>My Schedule</strong>
+                    </div>
+
+                </div>
+
+
+                <div class="topbar-actions">
+
+                    <button
+                        type="button"
+                        class="icon-button"
+                        id="themeToggle"
+                        aria-label="Switch theme">
+
+                        ◐
+
+                    </button>
+
+
+                    <button
+                        type="button"
+                        class="icon-button notification-button"
+                        id="notificationsButton"
+                        aria-label="Notifications">
+
+                        ♧
+
+                        <span
+                            class="notification-indicator"
+                            id="notificationIndicator"
+                            hidden>
+                        </span>
+
+                    </button>
+
+
+                    <div class="topbar-profile">
+
+                        <button
+                            type="button"
+                            class="topbar-avatar"
+                            id="profileMenuToggle"
+                            aria-label="Open account menu"
+                            aria-expanded="false">
+
+                            <span id="topbarAvatar">?</span>
+
+                        </button>
+
+
+                        <div
+                            class="account-dropdown"
+                            id="accountDropdown"
+                            hidden>
+
+                            <div class="dropdown-user">
+                                <strong id="dropdownName">Your account</strong>
+                                <small id="dropdownEmail">Loading...</small>
+                            </div>
+
+                            <a href="settings.html">Account settings</a>
+
+                            <button
+                                type="button"
+                                id="signOutButton">
+
+                                Sign out
+
+                            </button>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </header>
+
+
+            <!-- PAGE CONTENT -->
+
+            <div class="dashboard-content">
+
+
+                <!-- PAGE INTRO -->
+
+                <section class="page-heading-row">
+
+                    <div>
+
+                        <p class="welcome-eyebrow">PLAN WITH PURPOSE</p>
+
+                        <h1>My Schedule</h1>
+
+                        <p>
+                            Organise your responsibilities and make space
+                            for the activities you enjoy.
+                        </p>
+
+                    </div>
+
+
+                    <button
+                        type="button"
+                        class="btn btn-primary"
+                        id="addScheduleActivity">
+
+                        <span aria-hidden="true">＋</span>
+                        Add activity
+
+                    </button>
+
+                </section>
+
+
+                <!-- SCHEDULE OVERVIEW -->
+
+                <section class="schedule-summary-grid">
+
+                    <article class="summary-card">
+
+                        <span class="summary-card-label">
+                            PLANNED ACTIVITIES
+                        </span>
+
+                        <strong id="plannedActivityCount">—</strong>
+
+                        <small>For the selected day</small>
+
+                    </article>
+
+
+                    <article class="summary-card">
+
+                        <span class="summary-card-label">
+                            COMPLETED
+                        </span>
+
+                        <strong id="completedActivityCount">—</strong>
+
+                        <small>Activities completed</small>
+
+                    </article>
+
+
+                    <article class="summary-card">
+
+                        <span class="summary-card-label">
+                            REMAINING
+                        </span>
+
+                        <strong id="remainingActivityCount">—</strong>
+
+                        <small>Activities still to do</small>
+
+                    </article>
+
+
+                    <article class="summary-card">
+
+                        <span class="summary-card-label">
+                            PLANNED TIME
+                        </span>
+
+                        <strong id="plannedTimeTotal">—</strong>
+
+                        <small>Total scheduled duration</small>
+
+                    </article>
+
+                </section>
+
+
+                <!-- CALENDAR TOOLBAR -->
+
+                <section class="dashboard-panel calendar-panel">
+
+                    <div class="calendar-toolbar">
+
+                        <div class="calendar-date-controls">
+
+                            <div class="calendar-navigation">
+
+                                <button
+                                    type="button"
+                                    class="icon-button"
+                                    id="previousDate"
+                                    aria-label="Previous date">
+
+                                    ←
+
+                                </button>
+
+                                <button
+                                    type="button"
+                                    class="icon-button"
+                                    id="nextDate"
+                                    aria-label="Next date">
+
+                                    →
+
+                                </button>
+
+                            </div>
+
+
+                            <div class="calendar-current-date">
+
+                                <h2 id="selectedDateHeading">
+                                    Loading date...
+                                </h2>
+
+                                <button
+                                    type="button"
+                                    class="text-link"
+                                    id="goToToday">
+
+                                    Today
+
+                                </button>
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="calendar-toolbar-actions">
+
+                            <input
+                                type="date"
+                                id="calendarDatePicker"
+                                aria-label="Choose a date"
+                            >
+
+
+                            <div
+                                class="view-switch"
+                                role="group"
+                                aria-label="Calendar view">
+
+                                <button
+                                    type="button"
+                                    class="view-switch-button active"
+                                    id="dailyViewButton"
+                                    aria-pressed="true">
+
+                                    Day
+
+                                </button>
+
+                                <button
+                                    type="button"
+                                    class="view-switch-button"
+                                    id="weeklyViewButton"
+                                    aria-pressed="false">
+
+                                    Week
+
+                                </button>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- DAY VIEW -->
+
+                    <section
+                        class="calendar-view daily-calendar-view"
+                        id="dailyCalendarView"
+                        aria-label="Daily schedule">
+
+                        <div class="calendar-day-header">
+
+                            <div class="timeline-time-column">
+                                Time
+                            </div>
+
+                            <div class="timeline-day-heading">
+                                <strong id="dailyDayName">Today</strong>
+                                <span id="dailyDayNumber">—</span>
+                            </div>
+
+                        </div>
+
+
+                        <div
+                            class="daily-timeline"
+                            id="dailyTimeline">
+
+                            <div
+                                class="timeline-empty-state"
+                                id="dailyTimelineEmpty">
+
+                                <div class="empty-state-icon">▦</div>
+
+                                <h3>Your schedule is clear.</h3>
+
+                                <p>
+                                    Add an activity to start planning
+                                    this day.
+                                </p>
+
+                                <button
+                                    type="button"
+                                    class="btn btn-secondary"
+                                    id="emptyScheduleAdd">
+
+                                    Add your first activity
+
+                                </button>
+
+                            </div>
+
+                        </div>
+
+                    </section>
+
+
+                    <!-- WEEK VIEW -->
+
+                    <section
+                        class="calendar-view weekly-calendar-view"
+                        id="weeklyCalendarView"
+                        aria-label="Weekly schedule"
+                        hidden>
+
+                        <div
+                            class="weekly-calendar-grid"
+                            id="weeklyCalendarGrid">
+
+                            <div
+                                class="weekly-empty-state"
+                                id="weeklyCalendarEmpty">
+
+                                <div class="empty-state-icon">▦</div>
+
+                                <h3>Your week is ready to plan.</h3>
+
+                                <p>
+                                    Add activities to see your weekly timeline.
+                                </p>
+
+                            </div>
+
+                        </div>
+
+                    </section>
+
+
+                </section>
+
+
+                <!-- OVERLAP WARNINGS -->
+
+                <section
+                    class="dashboard-panel schedule-warning-panel"
+                    id="scheduleWarnings"
+                    hidden>
+
+                    <div class="panel-header">
+
+                        <div>
+                            <h2>Schedule conflicts</h2>
+                            <p>
+                                Some activities may overlap.
+                                Review your schedule to avoid clashes.
+                            </p>
+                        </div>
+
+                    </div>
+
+
+                    <div
+                        class="schedule-warning-list"
+                        id="scheduleWarningList">
+                    </div>
+
+                </section>
+
+
+                <!-- UPCOMING ACTIVITIES -->
+
+                <section class="dashboard-panel upcoming-panel">
+
+                    <div class="panel-header">
+
+                        <div>
+                            <h2>Upcoming activities</h2>
+                            <p>What's coming up next in your schedule?</p>
+                        </div>
+
+                    </div>
+
+
+                    <div
+                        class="upcoming-list"
+                        id="scheduleUpcomingList">
+
+                        <div
+                            class="empty-state"
+                            id="scheduleUpcomingEmpty">
+
+                            <div class="empty-state-icon">◷</div>
+
+                            <h3>Nothing upcoming yet.</h3>
+
+                            <p>
+                                Your next scheduled activities will appear here.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+                </section>
+
+
+                <!-- FOOTER -->
+
+                <footer class="dashboard-footer">
+
+                    <p>
+                        balanceyourtime. — Make time for what matters.
+                    </p>
+
+                    <a href="settings.html">Settings</a>
+
+                </footer>
+
+
+            </div>
+
+        </main>
+
+    </div>
+
+
+    <!-- ADD / EDIT ACTIVITY DIALOG -->
+
+    <dialog
+        class="quick-add-dialog"
+        id="scheduleActivityDialog">
+
+        <div class="dialog-header">
+
+            <div>
+
+                <p class="auth-eyebrow" id="activityDialogEyebrow">
+                    SCHEDULE BUILDER
+                </p>
+
+                <h2 id="activityDialogTitle">Add activity</h2>
+
+            </div>
+
+
+            <button
+                type="button"
+                class="dialog-close"
+                id="closeScheduleDialog"
+                aria-label="Close dialog">
+
+                ×
+
+            </button>
+
+        </div>
+
+
+        <form id="scheduleActivityForm">
+
+            <input
+                type="hidden"
+                id="scheduleActivityId"
+                name="activityId"
+            >
+
+
+            <div class="form-group">
+
+                <label for="scheduleActivityName">
+                    Activity name
+                </label>
+
+                <input
+                    type="text"
+                    id="scheduleActivityName"
+                    name="title"
+                    placeholder="For example, Science revision"
+                    maxlength="100"
+                    required>
+
+            </div>
+
+
+            <div class="form-group">
+
+                <label for="scheduleActivityCategory">
+                    Category
+                </label>
+
+                <select
+                    id="scheduleActivityCategory"
+                    name="category"
+                    required>
+
+                    <option value="">Choose a category</option>
+
+                    <option value="Studying">Studying</option>
+                    <option value="Homework">Homework</option>
+                    <option value="Tuition">Tuition</option>
+                    <option value="Hobbies">Hobbies</option>
+                    <option value="Sports">Sports</option>
+                    <option value="Exercise">Exercise</option>
+                    <option value="Entertainment">Entertainment</option>
+                    <option value="Family">Family</option>
+                    <option value="Personal Time">Personal Time</option>
+                    <option value="Sleep">Sleep</option>
+                    <option value="Other">Other</option>
+
+                </select>
+
+            </div>
+
+
+            <div class="form-group">
+
+                <label for="scheduleActivityDate">
+                    Date
+                </label>
+
+                <input
+                    type="date"
+                    id="scheduleActivityDate"
+                    name="date"
+                    required>
+
+            </div>
+
+
+            <div class="form-row">
+
+                <div class="form-group">
+
+                    <label for="scheduleStartTime">
+                        Start time
+                    </label>
+
+                    <input
+                        type="time"
+                        id="scheduleStartTime"
+                        name="startTime"
+                        required>
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label for="scheduleEndTime">
+                        End time
+                    </label>
+
+                    <input
+                        type="time"
+                        id="scheduleEndTime"
+                        name="endTime"
+                        required>
+
+                </div>
+
+            </div>
+
+
+            <div class="form-group">
+
+                <label for="scheduleDescription">
+                    Description
+                    <span class="optional-label">Optional</span>
+                </label>
+
+                <textarea
+                    id="scheduleDescription"
+                    name="description"
+                    rows="3"
+                    maxlength="500"
+                    placeholder="Add more details about this activity..."></textarea>
+
+            </div>
+
+
+            <!-- RECURRENCE -->
+
+            <div class="form-group">
+
+                <label for="recurrenceType">
+                    Repeat
+                </label>
+
+                <select
+                    id="recurrenceType"
+                    name="recurrenceType">
+
+                    <option value="none">Does not repeat</option>
+                    <option value="daily">Every day</option>
+                    <option value="weekly">Every week</option>
+                    <option value="weekdays">Every weekday</option>
+                    <option value="custom">Choose days</option>
+
+                </select>
+
+            </div>
+
+
+            <fieldset
+                class="choice-fieldset recurrence-days-field"
+                id="recurrenceDaysField"
+                hidden>
+
+                <legend class="field-legend">
+                    Repeat on
+                </legend>
+
+                <div class="days-grid">
+
+                    <label class="choice-option">
+                        <input type="checkbox" name="recurrenceDays" value="1">
+                        <span>Mon</span>
+                    </label>
+
+                    <label class="choice-option">
+                        <input type="checkbox" name="recurrenceDays" value="2">
+                        <span>Tue</span>
+                    </label>
+
+                    <label class="choice-option">
+                        <input type="checkbox" name="recurrenceDays" value="3">
+                        <span>Wed</span>
+                    </label>
+
+                    <label class="choice-option">
+                        <input type="checkbox" name="recurrenceDays" value="4">
+                        <span>Thu</span>
+                    </label>
+
+                    <label class="choice-option">
+                        <input type="checkbox" name="recurrenceDays" value="5">
+                        <span>Fri</span>
+                    </label>
+
+                    <label class="choice-option">
+                        <input type="checkbox" name="recurrenceDays" value="6">
+                        <span>Sat</span>
+                    </label>
+
+                    <label class="choice-option">
+                        <input type="checkbox" name="recurrenceDays" value="0">
+                        <span>Sun</span>
+                    </label>
+
+                </div>
+
+            </fieldset>
+
+
+            <!-- REMINDER -->
+
+            <div class="form-group">
+
+                <label for="activityReminder">
+                    Reminder
+                </label>
+
+                <select
+                    id="activityReminder"
+                    name="reminder">
+
+                    <option value="none">No reminder</option>
+                    <option value="5">5 minutes before</option>
+                    <option value="10">10 minutes before</option>
+                    <option value="15">15 minutes before</option>
+                    <option value="30">30 minutes before</option>
+                    <option value="60">1 hour before</option>
+
+                </select>
+
+            </div>
+
+
+            <div
+                class="auth-message"
+                id="scheduleFormMessage"
+                role="alert"
+                aria-live="polite"
+                hidden>
+            </div>
+
+
+            <div
+                class="schedule-form-warning"
+                id="scheduleOverlapMessage"
+                role="status"
+                hidden>
+            </div>
+
+
+            <div class="dialog-actions">
+
+                <button
+                    type="button"
+                    class="btn btn-secondary"
+                    id="cancelScheduleActivity">
+
+                    Cancel
+
+                </button>
+
+
+                <button
+                    type="submit"
+                    class="btn btn-primary"
+                    id="saveScheduleActivity">
+
+                    Save activity
+
+                </button>
+
+            </div>
+
+        </form>
+
+    </dialog>
+
+
+</body>
+</html>
